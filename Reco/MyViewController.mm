@@ -7,9 +7,11 @@
 //
 
 #import <Accelerate/Accelerate.h>
-#import "GCDTimer.h"
+#import <SEPlot/PlotView.h>
+
 #import "MyViewController.h"
-#import "PlotView.h"
+
+#import "GCDTimer.h"
 #import "Recorder.h"
 #import "bass.h"
 
@@ -161,7 +163,8 @@
 {
     [_recorder start];
     
-    _updateTimer = [GCDTimer scheduledTimerWithTimeInterval:0.016 repeats:YES block:^{
+    _updateTimer = [GCDTimer scheduledTimerWithTimeInterval:0.016
+                                                    repeats:YES block:^{
         [self onTimer];
     }];
     
