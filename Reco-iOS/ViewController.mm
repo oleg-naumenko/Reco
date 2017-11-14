@@ -38,6 +38,7 @@
     PlotView * plotView = [[PlotView alloc] initWithFrame:rect];
     plotView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     plotView.scalesOverlaid = YES;
+    plotView.oneTouchMovesPlot = YES;
     [plotView setWidth:30 forSide:PlotSideCount];
     [self.view addSubview:plotView];
     
