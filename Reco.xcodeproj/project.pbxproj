@@ -16,11 +16,32 @@
 		7C1D68481FA363DF00BF8218 /* MyViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C1D68471FA363DF00BF8218 /* MyViewController.mm */; };
 		7C1D684B1FA365DC00BF8218 /* libbass.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1D684A1FA365DB00BF8218 /* libbass.dylib */; };
 		7C1D684D1FA3660000BF8218 /* libbass.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C1D684A1FA365DB00BF8218 /* libbass.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7C1D68501FA3661600BF8218 /* Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1D684F1FA3661600BF8218 /* Recorder.m */; };
+		7C1D68501FA3661600BF8218 /* Recorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C1D684F1FA3661600BF8218 /* Recorder.mm */; };
 		7C1D68531FA36C2500BF8218 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1D68521FA36C1100BF8218 /* AppKit.framework */; };
 		7C1D68551FA36C2C00BF8218 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1D68541FA36C2A00BF8218 /* OpenGL.framework */; };
 		7C638FB31FA378F400964BAA /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C638FB21FA378F000964BAA /* Accelerate.framework */; };
 		7C638FE61FA382F300964BAA /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C638FE41FA382F200964BAA /* GCDTimer.m */; };
+		7C7B8EF91FBB4DD80009AC47 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EF71FBB4DD80009AC47 /* AudioToolbox.framework */; };
+		7C7B8EFA1FBB4DD80009AC47 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EF81FBB4DD80009AC47 /* CoreAudio.framework */; };
+		7C7B8EFC1FBB4DDF0009AC47 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EFB1FBB4DDF0009AC47 /* AVFoundation.framework */; };
+		7C7B8EFE1FBB4DE50009AC47 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EFD1FBB4DE50009AC47 /* SystemConfiguration.framework */; };
+		7C7B8F001FBB4DEC0009AC47 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EFF1FBB4DEC0009AC47 /* Security.framework */; };
+		7C7B8F021FBB4DF90009AC47 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */; };
+		7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07BB1FBB49A600D5DAD1 /* AppDelegate.m */; };
+		7CEC07BF1FBB49A600D5DAD1 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07BE1FBB49A600D5DAD1 /* ViewController.mm */; };
+		7CEC07C21FBB49A600D5DAD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CEC07C01FBB49A600D5DAD1 /* Main.storyboard */; };
+		7CEC07C41FBB49A600D5DAD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CEC07C31FBB49A600D5DAD1 /* Assets.xcassets */; };
+		7CEC07C71FBB49A600D5DAD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CEC07C51FBB49A600D5DAD1 /* LaunchScreen.storyboard */; };
+		7CEC07CA1FBB49A600D5DAD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07C91FBB49A600D5DAD1 /* main.m */; };
+		7CEC07D11FBB4A7200D5DAD1 /* Analyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07D01FBB4A7200D5DAD1 /* Analyzer.mm */; };
+		7CEC07D21FBB4A7200D5DAD1 /* Analyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07D01FBB4A7200D5DAD1 /* Analyzer.mm */; };
+		7CEC07D31FBB4A7200D5DAD1 /* Analyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07D01FBB4A7200D5DAD1 /* Analyzer.mm */; };
+		7CEC07D41FBB4A9B00D5DAD1 /* Recorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C1D684F1FA3661600BF8218 /* Recorder.mm */; };
+		7CEC07D51FBB4A9B00D5DAD1 /* Recorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C1D684F1FA3661600BF8218 /* Recorder.mm */; };
+		7CEC07D61FBB4AAF00D5DAD1 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C638FE41FA382F200964BAA /* GCDTimer.m */; };
+		7CEC07D71FBB4AAF00D5DAD1 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C638FE41FA382F200964BAA /* GCDTimer.m */; };
+		7CEC07D91FBB4D7300D5DAD1 /* libbass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CEC07D81FBB4D7300D5DAD1 /* libbass.a */; };
+		DD64864E3580ECFA326861D7 /* Pods_Reco_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91342E26EAE8A2F7B91A0A30 /* Pods_Reco_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +70,7 @@
 /* Begin PBXFileReference section */
 		1359058538B5DFC4C8FBF3A5 /* Pods-Reco.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reco.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reco/Pods-Reco.release.xcconfig"; sourceTree = "<group>"; };
 		2A853031014876A76AD2CF35 /* Pods_Reco.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reco.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7911B60ED57F638843E6D2B6 /* Pods-Reco-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reco-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reco-iOS/Pods-Reco-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		7C1D68181FA3625300BF8218 /* Reco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1D681B1FA3625300BF8218 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C1D681C1FA3625300BF8218 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -65,13 +87,34 @@
 		7C1D68491FA365D100BF8218 /* bass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bass.h; path = "bass24-osx/bass.h"; sourceTree = SOURCE_ROOT; };
 		7C1D684A1FA365DB00BF8218 /* libbass.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbass.dylib; path = "bass24-osx/libbass.dylib"; sourceTree = SOURCE_ROOT; };
 		7C1D684E1FA3661600BF8218 /* Recorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Recorder.h; sourceTree = "<group>"; };
-		7C1D684F1FA3661600BF8218 /* Recorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Recorder.m; sourceTree = "<group>"; };
+		7C1D684F1FA3661600BF8218 /* Recorder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Recorder.mm; sourceTree = "<group>"; };
 		7C1D68521FA36C1100BF8218 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7C1D68541FA36C2A00BF8218 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		7C1D68581FA36D9600BF8218 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		7C638FB21FA378F000964BAA /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		7C638FE41FA382F200964BAA /* GCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDTimer.m; path = GCDTimer/Source/GCDTimer.m; sourceTree = SOURCE_ROOT; };
-		7C638FE51FA382F300964BAA /* GCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDTimer.h; path = GCDTimer/Source/GCDTimer.h; sourceTree = SOURCE_ROOT; };
+		7C638FE41FA382F200964BAA /* GCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDTimer.m; path = Common/GCDTimer.m; sourceTree = SOURCE_ROOT; };
+		7C638FE51FA382F300964BAA /* GCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDTimer.h; path = Common/GCDTimer.h; sourceTree = SOURCE_ROOT; };
+		7C7B8EF71FBB4DD80009AC47 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		7C7B8EF81FBB4DD80009AC47 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		7C7B8EFB1FBB4DDF0009AC47 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		7C7B8EFD1FBB4DE50009AC47 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		7C7B8EFF1FBB4DEC0009AC47 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
+		7CEC07B81FBB49A600D5DAD1 /* Reco-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reco-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CEC07BA1FBB49A600D5DAD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7CEC07BB1FBB49A600D5DAD1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7CEC07BD1FBB49A600D5DAD1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7CEC07BE1FBB49A600D5DAD1 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		7CEC07C11FBB49A600D5DAD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7CEC07C31FBB49A600D5DAD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CEC07C61FBB49A600D5DAD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7CEC07C81FBB49A600D5DAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CEC07C91FBB49A600D5DAD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7CEC07CF1FBB4A7200D5DAD1 /* Analyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Analyzer.h; sourceTree = "<group>"; };
+		7CEC07D01FBB4A7200D5DAD1 /* Analyzer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Analyzer.mm; sourceTree = "<group>"; };
+		7CEC07D81FBB4D7300D5DAD1 /* libbass.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbass.a; path = "bass24-ios/libbass.a"; sourceTree = SOURCE_ROOT; };
+		889D98C44BA24E75B0A3EECF /* Pods-Reco-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reco-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reco-iOS/Pods-Reco-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		91342E26EAE8A2F7B91A0A30 /* Pods_Reco_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reco_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD88B25459DF1D3B2555F00B /* Pods-Reco.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reco.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reco/Pods-Reco.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,13 +138,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7CEC07B51FBB49A600D5DAD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C7B8F021FBB4DF90009AC47 /* Accelerate.framework in Frameworks */,
+				7C7B8F001FBB4DEC0009AC47 /* Security.framework in Frameworks */,
+				7C7B8EFE1FBB4DE50009AC47 /* SystemConfiguration.framework in Frameworks */,
+				7C7B8EFC1FBB4DDF0009AC47 /* AVFoundation.framework in Frameworks */,
+				7C7B8EF91FBB4DD80009AC47 /* AudioToolbox.framework in Frameworks */,
+				7C7B8EFA1FBB4DD80009AC47 /* CoreAudio.framework in Frameworks */,
+				7CEC07D91FBB4D7300D5DAD1 /* libbass.a in Frameworks */,
+				DD64864E3580ECFA326861D7 /* Pods_Reco_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		7C1D680F1FA3625300BF8218 = {
 			isa = PBXGroup;
 			children = (
+				7CEC07CE1FBB4A5800D5DAD1 /* Common */,
 				7C1D681A1FA3625300BF8218 /* Reco */,
+				7CEC07B91FBB49A600D5DAD1 /* Reco-iOS */,
 				7C1D682E1FA3625300BF8218 /* RecoTests */,
 				7C1D68191FA3625300BF8218 /* Products */,
 				7C1D68511FA36C1100BF8218 /* Frameworks */,
@@ -114,6 +174,7 @@
 			children = (
 				7C1D68181FA3625300BF8218 /* Reco.app */,
 				7C1D682B1FA3625300BF8218 /* RecoTests.xctest */,
+				7CEC07B81FBB49A600D5DAD1 /* Reco-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,13 +186,10 @@
 				7C1D681C1FA3625300BF8218 /* AppDelegate.m */,
 				7C1D68461FA363DF00BF8218 /* MyViewController.h */,
 				7C1D68471FA363DF00BF8218 /* MyViewController.mm */,
-				7C1D684E1FA3661600BF8218 /* Recorder.h */,
-				7C1D684F1FA3661600BF8218 /* Recorder.m */,
 				7C1D681E1FA3625300BF8218 /* Assets.xcassets */,
-				7C638FE51FA382F300964BAA /* GCDTimer.h */,
-				7C638FE41FA382F200964BAA /* GCDTimer.m */,
 				7C1D68491FA365D100BF8218 /* bass.h */,
 				7C1D684A1FA365DB00BF8218 /* libbass.dylib */,
+				7CEC07D81FBB4D7300D5DAD1 /* libbass.a */,
 				7C1D68201FA3625300BF8218 /* MainMenu.xib */,
 				7C1D68231FA3625300BF8218 /* Info.plist */,
 				7C1D68241FA3625300BF8218 /* main.m */,
@@ -152,13 +210,49 @@
 		7C1D68511FA36C1100BF8218 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */,
+				7C7B8EFF1FBB4DEC0009AC47 /* Security.framework */,
+				7C7B8EFD1FBB4DE50009AC47 /* SystemConfiguration.framework */,
+				7C7B8EFB1FBB4DDF0009AC47 /* AVFoundation.framework */,
+				7C7B8EF71FBB4DD80009AC47 /* AudioToolbox.framework */,
+				7C7B8EF81FBB4DD80009AC47 /* CoreAudio.framework */,
 				7C638FB21FA378F000964BAA /* Accelerate.framework */,
 				7C1D68581FA36D9600BF8218 /* libc++.tbd */,
 				7C1D68541FA36C2A00BF8218 /* OpenGL.framework */,
 				7C1D68521FA36C1100BF8218 /* AppKit.framework */,
 				2A853031014876A76AD2CF35 /* Pods_Reco.framework */,
+				91342E26EAE8A2F7B91A0A30 /* Pods_Reco_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CEC07B91FBB49A600D5DAD1 /* Reco-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7CEC07BA1FBB49A600D5DAD1 /* AppDelegate.h */,
+				7CEC07BB1FBB49A600D5DAD1 /* AppDelegate.m */,
+				7CEC07BD1FBB49A600D5DAD1 /* ViewController.h */,
+				7CEC07BE1FBB49A600D5DAD1 /* ViewController.mm */,
+				7CEC07C01FBB49A600D5DAD1 /* Main.storyboard */,
+				7CEC07C31FBB49A600D5DAD1 /* Assets.xcassets */,
+				7CEC07C51FBB49A600D5DAD1 /* LaunchScreen.storyboard */,
+				7CEC07C81FBB49A600D5DAD1 /* Info.plist */,
+				7CEC07C91FBB49A600D5DAD1 /* main.m */,
+			);
+			path = "Reco-iOS";
+			sourceTree = "<group>";
+		};
+		7CEC07CE1FBB4A5800D5DAD1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7CEC07CF1FBB4A7200D5DAD1 /* Analyzer.h */,
+				7CEC07D01FBB4A7200D5DAD1 /* Analyzer.mm */,
+				7C1D684E1FA3661600BF8218 /* Recorder.h */,
+				7C1D684F1FA3661600BF8218 /* Recorder.mm */,
+				7C638FE51FA382F300964BAA /* GCDTimer.h */,
+				7C638FE41FA382F200964BAA /* GCDTimer.m */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		91724CE8935A792256DA658B /* Pods */ = {
@@ -166,6 +260,8 @@
 			children = (
 				BD88B25459DF1D3B2555F00B /* Pods-Reco.debug.xcconfig */,
 				1359058538B5DFC4C8FBF3A5 /* Pods-Reco.release.xcconfig */,
+				889D98C44BA24E75B0A3EECF /* Pods-Reco-iOS.debug.xcconfig */,
+				7911B60ED57F638843E6D2B6 /* Pods-Reco-iOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -212,6 +308,26 @@
 			productReference = 7C1D682B1FA3625300BF8218 /* RecoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7CEC07B71FBB49A600D5DAD1 /* Reco-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CEC07CD1FBB49A600D5DAD1 /* Build configuration list for PBXNativeTarget "Reco-iOS" */;
+			buildPhases = (
+				16C9DD02A8797C157A792EBF /* [CP] Check Pods Manifest.lock */,
+				7CEC07B41FBB49A600D5DAD1 /* Sources */,
+				7CEC07B51FBB49A600D5DAD1 /* Frameworks */,
+				7CEC07B61FBB49A600D5DAD1 /* Resources */,
+				D4D2B75FD9EE92DE58169675 /* [CP] Embed Pods Frameworks */,
+				FD9FC3308A66A44A2F81EE51 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Reco-iOS";
+			productName = "Reco-iOS";
+			productReference = 7CEC07B81FBB49A600D5DAD1 /* Reco-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -230,6 +346,10 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 7C1D68171FA3625300BF8218;
 					};
+					7CEC07B71FBB49A600D5DAD1 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 7C1D68131FA3625300BF8218 /* Build configuration list for PBXProject "Reco" */;
@@ -247,6 +367,7 @@
 			targets = (
 				7C1D68171FA3625300BF8218 /* Reco */,
 				7C1D682A1FA3625300BF8218 /* RecoTests */,
+				7CEC07B71FBB49A600D5DAD1 /* Reco-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -268,6 +389,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7CEC07B61FBB49A600D5DAD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CEC07C71FBB49A600D5DAD1 /* LaunchScreen.storyboard in Resources */,
+				7CEC07C41FBB49A600D5DAD1 /* Assets.xcassets in Resources */,
+				7CEC07C21FBB49A600D5DAD1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -286,6 +417,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Reco/Pods-Reco-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		16C9DD02A8797C157A792EBF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Reco-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		66DE0A1F3A74672A2C084F72 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,7 +442,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Reco/Pods-Reco-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SEPlot/SEPlot.framework",
+				"${BUILT_PRODUCTS_DIR}/SEPlot-macOS/SEPlot.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -322,6 +471,39 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D4D2B75FD9EE92DE58169675 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Reco-iOS/Pods-Reco-iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SEPlot-iOS/SEPlot.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SEPlot.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Reco-iOS/Pods-Reco-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD9FC3308A66A44A2F81EE51 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Reco-iOS/Pods-Reco-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -332,8 +514,9 @@
 				7C1D68481FA363DF00BF8218 /* MyViewController.mm in Sources */,
 				7C1D68251FA3625300BF8218 /* main.m in Sources */,
 				7C1D681D1FA3625300BF8218 /* AppDelegate.m in Sources */,
-				7C1D68501FA3661600BF8218 /* Recorder.m in Sources */,
+				7C1D68501FA3661600BF8218 /* Recorder.mm in Sources */,
 				7C638FE61FA382F300964BAA /* GCDTimer.m in Sources */,
+				7CEC07D11FBB4A7200D5DAD1 /* Analyzer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +524,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CEC07D71FBB4AAF00D5DAD1 /* GCDTimer.m in Sources */,
 				7C1D68301FA3625300BF8218 /* RecoTests.m in Sources */,
+				7CEC07D21FBB4A7200D5DAD1 /* Analyzer.mm in Sources */,
+				7CEC07D51FBB4A9B00D5DAD1 /* Recorder.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CEC07B41FBB49A600D5DAD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CEC07D61FBB4AAF00D5DAD1 /* GCDTimer.m in Sources */,
+				7CEC07BF1FBB49A600D5DAD1 /* ViewController.mm in Sources */,
+				7CEC07CA1FBB49A600D5DAD1 /* main.m in Sources */,
+				7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */,
+				7CEC07D41FBB4A9B00D5DAD1 /* Recorder.mm in Sources */,
+				7CEC07D31FBB4A7200D5DAD1 /* Analyzer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +561,22 @@
 				7C1D68211FA3625300BF8218 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		7CEC07C01FBB49A600D5DAD1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CEC07C11FBB49A600D5DAD1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7CEC07C51FBB49A600D5DAD1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CEC07C61FBB49A600D5DAD1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -540,6 +755,53 @@
 			};
 			name = Release;
 		};
+		7CEC07CB1FBB49A600D5DAD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 889D98C44BA24E75B0A3EECF /* Pods-Reco-iOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZA6S8VA4XW;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Reco-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/bass24-ios",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.naumenko.Reco-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CEC07CC1FBB49A600D5DAD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7911B60ED57F638843E6D2B6 /* Pods-Reco-iOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZA6S8VA4XW;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Reco-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/bass24-ios",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.naumenko.Reco-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -566,6 +828,15 @@
 			buildConfigurations = (
 				7C1D68381FA3625300BF8218 /* Debug */,
 				7C1D68391FA3625300BF8218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CEC07CD1FBB49A600D5DAD1 /* Build configuration list for PBXNativeTarget "Reco-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CEC07CB1FBB49A600D5DAD1 /* Debug */,
+				7CEC07CC1FBB49A600D5DAD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

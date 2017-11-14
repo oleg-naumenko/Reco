@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EA1733FCA7A371E777AB168E62E0F1D17FFD41B5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C4CB4ED819A705F5661CAFED02ED4DBD8B906D8C" : 9223372036854775807,
+    "EA1733FCA7A371E777AB168E62E0F1D17FFD41B5" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E868238B-5731-41A6-A208-9229E488F879",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C4CB4ED819A705F5661CAFED02ED4DBD8B906D8C" : "plot\/",
+    "EA1733FCA7A371E777AB168E62E0F1D17FFD41B5" : "Reco\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Reco",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Reco.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/audioengineer\/seplot.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C4CB4ED819A705F5661CAFED02ED4DBD8B906D8C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/oleg-naumenko\/Reco.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EA1733FCA7A371E777AB168E62E0F1D17FFD41B5"
+    }
+  ]
+}
