@@ -27,6 +27,8 @@
 		7C7B8EFE1FBB4DE50009AC47 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EFD1FBB4DE50009AC47 /* SystemConfiguration.framework */; };
 		7C7B8F001FBB4DEC0009AC47 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EFF1FBB4DEC0009AC47 /* Security.framework */; };
 		7C7B8F021FBB4DF90009AC47 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */; };
+		7C8701092004DB72001E597B /* MelAnalyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8701082004DB72001E597B /* MelAnalyzer.mm */; };
+		7C87010A2004DB7E001E597B /* MelAnalyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8701082004DB72001E597B /* MelAnalyzer.mm */; };
 		7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07BB1FBB49A600D5DAD1 /* AppDelegate.m */; };
 		7CEC07BF1FBB49A600D5DAD1 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07BE1FBB49A600D5DAD1 /* ViewController.mm */; };
 		7CEC07C21FBB49A600D5DAD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CEC07C01FBB49A600D5DAD1 /* Main.storyboard */; };
@@ -100,6 +102,8 @@
 		7C7B8EFD1FBB4DE50009AC47 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		7C7B8EFF1FBB4DEC0009AC47 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
+		7C8701072004DB72001E597B /* MelAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MelAnalyzer.h; sourceTree = "<group>"; };
+		7C8701082004DB72001E597B /* MelAnalyzer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MelAnalyzer.mm; sourceTree = "<group>"; };
 		7CEC07B81FBB49A600D5DAD1 /* Reco-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reco-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEC07BA1FBB49A600D5DAD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7CEC07BB1FBB49A600D5DAD1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 			children = (
 				7CEC07CF1FBB4A7200D5DAD1 /* Analyzer.h */,
 				7CEC07D01FBB4A7200D5DAD1 /* Analyzer.mm */,
+				7C8701072004DB72001E597B /* MelAnalyzer.h */,
+				7C8701082004DB72001E597B /* MelAnalyzer.mm */,
 				7C1D684E1FA3661600BF8218 /* Recorder.h */,
 				7C1D684F1FA3661600BF8218 /* Recorder.mm */,
 				7C638FE51FA382F300964BAA /* GCDTimer.h */,
@@ -516,6 +522,7 @@
 				7C1D681D1FA3625300BF8218 /* AppDelegate.m in Sources */,
 				7C1D68501FA3661600BF8218 /* Recorder.mm in Sources */,
 				7C638FE61FA382F300964BAA /* GCDTimer.m in Sources */,
+				7C8701092004DB72001E597B /* MelAnalyzer.mm in Sources */,
 				7CEC07D11FBB4A7200D5DAD1 /* Analyzer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,6 +547,7 @@
 				7CEC07CA1FBB49A600D5DAD1 /* main.m in Sources */,
 				7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */,
 				7CEC07D41FBB4A9B00D5DAD1 /* Recorder.mm in Sources */,
+				7C87010A2004DB7E001E597B /* MelAnalyzer.mm in Sources */,
 				7CEC07D31FBB4A7200D5DAD1 /* Analyzer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -765,7 +773,7 @@
 				DEVELOPMENT_TEAM = ZA6S8VA4XW;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Reco-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -788,7 +796,7 @@
 				DEVELOPMENT_TEAM = ZA6S8VA4XW;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Reco-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

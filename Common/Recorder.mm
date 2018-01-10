@@ -29,7 +29,7 @@ BOOL _RecordProc (HRECORD handle, const void *buffer, DWORD length, void *user)
 - (UInt32) start
 {
     BASS_RecordInit(-1);
-    _recChannel = BASS_RecordStart(22050, 1, 0, _RecordProc, (__bridge void*)self);
+    _recChannel = BASS_RecordStart(16000, 1, 0, _RecordProc, (__bridge void*)self);
     if (_recChannel) {
         _recState = RecStateRecording;
     } else {

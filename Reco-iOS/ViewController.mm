@@ -32,8 +32,12 @@
     
     CGRect rect = self.view.bounds;
     
-    rect.origin.y += 20;
-    rect.size.height -= 20;
+    CGFloat sbHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
+    rect.origin.y += sbHeight;
+    rect.size.height -= sbHeight;
     
     PlotView * plotView = [[PlotView alloc] initWithFrame:rect];
     plotView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

@@ -14,7 +14,8 @@
 
 #import <Accelerate/Accelerate.h>
 
-#define FFT_SIZE 1024
+#define FFT_SIZE 512
+
 
 @implementation Analyzer
 {
@@ -60,6 +61,30 @@
     
     _fftSize = FFT_SIZE;
     
+    float fsz = _fftSize;
+    float neededBins = 16.0f;
+    float log2fCoef = (log2f(fsz))/(neededBins-1);
+    float expandCoef = 1.432;//powf(2.f, log2fCoef);
+    
+    NSMutableArray * marr = @[].mutableCopy;
+    NSInteger index = 0;
+    float bins = 1.f;
+    do {
+        int iBins = (ceilf(bins));
+        [marr addObject:[NSString stringWithFormat:@"%@ - %@", @(iBins), @(index)]];
+//        for (int i = 0; i < iBins; i++) {
+            index+= iBins;
+//        }
+        bins = expandCoef * bins;
+//        bins = 2 * bins;
+    } while (index < _fftSize);
+    
+    NSLog(@"%@", marr);// N(2) = log2(fftSize) + 1
+    NSLog(@"count = %lu", (unsigned long)marr.count);
+    
+    float p1 = log2f(512.0f);
+    float p2 = log2f(512.0f)/log2f(1.41f);
+
     _sizeLog2N = (vDSP_Length)log2((double)_fftSize);
     
     _fftSetup = vDSP_create_fftsetup(_sizeLog2N, kFFTDirection_Forward);
@@ -84,9 +109,10 @@
     PlotColor colorMax = (PlotColor){1.0f, 0.0f, 0.0f, 1.0f};
     PlotColor colorMin = (PlotColor){0.0f, 1.0f, 0.0f, 1.0f};
     
-    _lineMax = [_plotView addLineChartWithName:@"line" data:_vertexBuffer length:_fftSize*2 thickness:1 color:colorMax];
-    _lineMin = [_plotView addLineChartWithName:@"line" data:_vertexBuffer length:_fftSize*2 thickness:1 color:colorMin];
-    _line    = [_plotView addLineChartWithName:@"line" data:_vertexBuffer length:_fftSize*2 thickness:1 color:color];
+    _lineMax = [_plotView addLineChartWithName:@"max" data:_vertexBuffer length:_fftSize*2 thickness:1 color:colorMax];
+    _lineMin = [_plotView addLineChartWithName:@"min" data:_vertexBuffer length:_fftSize*2 thickness:1 color:colorMin];
+    _line    = [_plotView addLineChartWithName:@"line" data:_vertexBuffer length:_fftSize*2 thickness:2 color:color];
+//    _line    = [_plotView addBarChartWithName:@"live" data:_vertexBuffer length:_fftSize*2 color1:color color2:color];
     
     float lineData[] = {-10.0f, 0.0f, (float)_fftSize + 10, 0.0f};
     
@@ -94,9 +120,9 @@
     
     //    [_plotView addLineChartWithName:@"hor" data:lineData length:4 thickness:2 color:grayColor];
     
-    [_plotView setRangeMinX:0 maxX:_fftSize+64 minY:-10 maxY:100];
-    [_plotView setVisibleRangeMinX:0 maxX:_fftSize/2 + 16 minY:-6 maxY:9];
-    _plotView.gridStepX = 125;
+    [_plotView setRangeMinX:-25 maxX:_fftSize+64 minY:-100 maxY:500];
+    [_plotView setVisibleRangeMinX:0 maxX:125 minY:-6 maxY:10];
+    _plotView.gridStepX = 25;
     _plotView.gridStepY = 5.0;
     
     [_plotView setScaleFontSize:12];
@@ -149,7 +175,7 @@
     [_recorder start];
     
     __weak typeof(self) weakSelf = self;
-    _updateTimer = [GCDTimer scheduledTimerWithTimeInterval:0.016
+    _updateTimer = [GCDTimer scheduledTimerWithTimeInterval:0.010
                                                     repeats:YES block:^{
                                                         [weakSelf onTimer];
                                                     }];
@@ -176,6 +202,22 @@
     B = 0.01f;
     vDSP_vsmul(_fftBuffer, 1, &B, _avgBuffer, 1, _fftSize);
     
+    NSInteger index = 0;
+    NSInteger bins = 1;
+    while (index < _fftSize) {
+        
+        for (int i = 0; i < bins; i++) {
+            index++;
+        }
+        bins = 2 * bins;
+    }
+    
+    float mean = 0.0;
+    vDSP_meanv(_avgBuffer, 1, &mean, _fftSize);
+    mean = -mean;
+
+    vDSP_vsadd(_avgBuffer, 1, &mean, _avgBuffer, 1, _fftSize);
+    
     //    B = 10.0f;
     //    vDSP_vsadd(_fftBuffer, 1, &B, _fftBuffer, 1, _fftSize);
     
@@ -193,16 +235,21 @@
     complexOut.realp = _fftBuffer;
     complexOut.imagp = _fftBuffer + _fftSize;
     
-    vDSP_fft_zop(_fftSetup, &complexIn, 1, &complexOut, 1, _sizeLog2N, kFFTDirection_Inverse);
+    vDSP_fft_zop(_fftSetup, &complexIn, 1, &complexOut, 1, _sizeLog2N, kFFTDirection_Forward);
+    
+//    vDSP_zvmags(&complexOut, 1, _fftBuffer, 1, _fftSize);
     
     for (int i = 0; i < _fftSize; i++) {
         int j = i * 2 + 1;
-        if (isnan(_fftBuffer[i])) continue;
+        if (isnan(_fftBuffer[i])) {
+            continue;
+        }
         _vertexBuffer[j] = 0.2f * _fftBuffer[i] + 0.8f * _vertexBuffer[j];// = _fftBuffer[i]/10 + 10;
         if (_vertexBuffer[j] > _vertexBufferMax[j]) _vertexBufferMax[j] = _vertexBuffer[j];
-        else _vertexBufferMax[j] = 0.001f * _vertexBuffer[j] + 0.999f * _vertexBufferMax[j];
+        else _vertexBufferMax[j] = 0.01f * _vertexBuffer[j] + 0.99f * _vertexBufferMax[j];
         if (_vertexBuffer[j] < _vertexBufferMin[j]) _vertexBufferMin[j] = _vertexBuffer[j];
-        else _vertexBufferMin[j] = 0.001f * _vertexBuffer[j] + 0.999f * _vertexBufferMin[j];
+        else _vertexBufferMin[j] = 0.01f * _vertexBuffer[j] + 0.99f * _vertexBufferMin[j];
+//        _vertexBufferMin[j] = 0.2f * _fftBuffer[_fftSize+i] + 0.8f * _vertexBuffer[j];
     }
     [_plotView setData:_vertexBuffer    offset:0 ofLength:_fftSize * 2 forChart:_line];
     [_plotView setData:_vertexBufferMax offset:0 ofLength:_fftSize * 2 forChart:_lineMax];

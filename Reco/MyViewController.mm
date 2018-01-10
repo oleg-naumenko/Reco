@@ -10,6 +10,7 @@
 #import <SEPlot/PlotView.h>
 
 #import "MyViewController.h"
+#import "MelAnalyzer.h"
 #import "Analyzer.h"
 
 
@@ -19,7 +20,7 @@
 
 @implementation MyViewController
 {
-    Analyzer * _analyzer;
+    MelAnalyzer * _analyzer;
 }
 
 - (void)viewDidLoad {
@@ -30,7 +31,7 @@
     plotView.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
     [self.view addSubview:plotView];
     
-    _analyzer = [Analyzer new];
+    _analyzer = [MelAnalyzer new];
     _analyzer.plotView = plotView;
 }
 
