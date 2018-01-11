@@ -29,6 +29,10 @@
 		7C7B8F021FBB4DF90009AC47 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */; };
 		7C8701092004DB72001E597B /* MelAnalyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8701082004DB72001E597B /* MelAnalyzer.mm */; };
 		7C87010A2004DB7E001E597B /* MelAnalyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8701082004DB72001E597B /* MelAnalyzer.mm */; };
+		7CC3AEED20078FE300E22624 /* on_fft_to_mel.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */; };
+		7CC3AEEE20079AC400E22624 /* on_fft_to_mel.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */; };
+		7CC3AEF12007B60200E22624 /* on_mag_to_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEF02007B60200E22624 /* on_mag_to_log.c */; };
+		7CC3AEF22007B60200E22624 /* on_mag_to_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEF02007B60200E22624 /* on_mag_to_log.c */; };
 		7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07BB1FBB49A600D5DAD1 /* AppDelegate.m */; };
 		7CEC07BF1FBB49A600D5DAD1 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07BE1FBB49A600D5DAD1 /* ViewController.mm */; };
 		7CEC07C21FBB49A600D5DAD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CEC07C01FBB49A600D5DAD1 /* Main.storyboard */; };
@@ -104,6 +108,10 @@
 		7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		7C8701072004DB72001E597B /* MelAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MelAnalyzer.h; sourceTree = "<group>"; };
 		7C8701082004DB72001E597B /* MelAnalyzer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MelAnalyzer.mm; sourceTree = "<group>"; };
+		7CC3AEEB20078FE300E22624 /* on_fft_to_mel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = on_fft_to_mel.h; sourceTree = "<group>"; };
+		7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = on_fft_to_mel.c; sourceTree = "<group>"; };
+		7CC3AEEF2007B60200E22624 /* on_mag_to_log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = on_mag_to_log.h; sourceTree = "<group>"; };
+		7CC3AEF02007B60200E22624 /* on_mag_to_log.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = on_mag_to_log.c; sourceTree = "<group>"; };
 		7CEC07B81FBB49A600D5DAD1 /* Reco-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reco-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEC07BA1FBB49A600D5DAD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7CEC07BB1FBB49A600D5DAD1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -257,6 +265,10 @@
 				7C1D684F1FA3661600BF8218 /* Recorder.mm */,
 				7C638FE51FA382F300964BAA /* GCDTimer.h */,
 				7C638FE41FA382F200964BAA /* GCDTimer.m */,
+				7CC3AEEB20078FE300E22624 /* on_fft_to_mel.h */,
+				7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */,
+				7CC3AEEF2007B60200E22624 /* on_mag_to_log.h */,
+				7CC3AEF02007B60200E22624 /* on_mag_to_log.c */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -520,8 +532,10 @@
 				7C1D68481FA363DF00BF8218 /* MyViewController.mm in Sources */,
 				7C1D68251FA3625300BF8218 /* main.m in Sources */,
 				7C1D681D1FA3625300BF8218 /* AppDelegate.m in Sources */,
+				7CC3AEED20078FE300E22624 /* on_fft_to_mel.c in Sources */,
 				7C1D68501FA3661600BF8218 /* Recorder.mm in Sources */,
 				7C638FE61FA382F300964BAA /* GCDTimer.m in Sources */,
+				7CC3AEF12007B60200E22624 /* on_mag_to_log.c in Sources */,
 				7C8701092004DB72001E597B /* MelAnalyzer.mm in Sources */,
 				7CEC07D11FBB4A7200D5DAD1 /* Analyzer.mm in Sources */,
 			);
@@ -545,8 +559,10 @@
 				7CEC07D61FBB4AAF00D5DAD1 /* GCDTimer.m in Sources */,
 				7CEC07BF1FBB49A600D5DAD1 /* ViewController.mm in Sources */,
 				7CEC07CA1FBB49A600D5DAD1 /* main.m in Sources */,
+				7CC3AEEE20079AC400E22624 /* on_fft_to_mel.c in Sources */,
 				7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */,
 				7CEC07D41FBB4A9B00D5DAD1 /* Recorder.mm in Sources */,
+				7CC3AEF22007B60200E22624 /* on_mag_to_log.c in Sources */,
 				7C87010A2004DB7E001E597B /* MelAnalyzer.mm in Sources */,
 				7CEC07D31FBB4A7200D5DAD1 /* Analyzer.mm in Sources */,
 			);

@@ -12,9 +12,10 @@
 
 @interface MelAnalyzer : NSObject
 
+- (instancetype) initWithFFTSize:(int32_t)fftSize;
+
 - (void) start;
 - (void) stop;
-- (void) teardown;
 
 @property (nonatomic, strong) PlotView * plotView;
 

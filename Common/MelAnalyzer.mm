@@ -6,50 +6,66 @@
 //  Copyright © 2018 oleg.naumenko. All rights reserved.
 //
 
+#import <Accelerate/Accelerate.h>
+
 #import "MelAnalyzer.h"
 
 #import "Recorder.h"
 #import "GCDTimer.h"
 #import "bass.h"
+#import "on_fft_to_mel.h"
+#import "on_mag_to_log.h"
 
-#import <Accelerate/Accelerate.h>
-
-#define FFT_SIZE 512
-
-struct MelFilterBank {
-    int32_t centerFFTNode;
-    int32_t fftNodesCount;
-    float * weights;
-};
-
+#define DEFAULT_FFT_SIZE 512
 
 @implementation MelAnalyzer
 {
-    Recorder * _recorder;
+    //transform in/out:
+    on_fft_to_mel_setup * _melSetup;
+    on_mag_to_log_setup * _logTransform;
     GCDTimer * _updateTimer;
-    NSUInteger _fftSize;
-    float * _fftBuffer;
-    float * _avgBuffer;
-    float * _melBuffer;
+    
+    //display:
+    NSInteger _line;
+    NSInteger _lineMax;
+    NSInteger _lineMin;
     float * _vertexBuffer;
     float * _vertexBufferMax;
     float * _vertexBufferMin;
     
-    MelFilterBank * _melFilters;
-    NSInteger _melFiltersCount;
-    
-    NSInteger _line;
-    NSInteger _lineMax;
-    NSInteger _lineMin;
-    vDSP_Length _sizeLog2N;
-    FFTSetup _fftSetup;
-    DWORD _dataFlag;
+    //record audio:
+    Recorder * _recorder;
+    DWORD _bassDataFlag;
+}
+
+- (instancetype) initWithFFTSize:(int32_t)fftSize
+{
+    if (self = [super init]) {
+        
+        [self setupWithFFTSize:fftSize];
+        _recorder = [[Recorder alloc] init];
+    }
+    return self;
+}
+
+- (instancetype) init
+{
+    if (self = [super init]) {
+        [self setupWithFFTSize:DEFAULT_FFT_SIZE];
+        _recorder = [[Recorder alloc] init];
+    }
+    return self;
 }
 
 - (void)dealloc
 {
-    if (_fftBuffer) {
-        free(_fftBuffer);
+    [_recorder stop];
+    
+    if (_melSetup) {
+        on_fft_to_mel_free(_melSetup);
+    }
+    if(_logTransform) {
+        on_mag_log_free(_logTransform);
     }
     if (_vertexBuffer) {
         free(_vertexBuffer);
@@ -60,156 +76,85 @@ struct MelFilterBank {
     if (_vertexBufferMin) {
         free(_vertexBufferMin);
     }
-    if (_avgBuffer) {
-        free(_avgBuffer);
-    }
-    if (_melBuffer) {
-        free(_melBuffer);
-    }
-    if (_melFilters) {
-        for (int i = 0; i < _melFiltersCount; i ++) {
-            if (_melFilters[i].weights) {
-                free(_melFilters[i].weights);
-                _melFilters[i].weights = NULL;
-            }
-        }
-        free(_melFilters);
-    }
+}
+
+- (void) setupWithFFTSize:(int32_t)fftSize
+{
+    _bassDataFlag = [self flagForFFTSize:fftSize * 2];
     
-    vDSP_destroy_fftsetup(_fftSetup);
+    _melSetup = on_fft_to_mel_init(fftSize);
+    _logTransform = on_mag_log_init(.000000001f);
+    
+    //log filter bank fft nodes:
+    
+    NSMutableArray * marr = @[].mutableCopy;
+    for (int i = 0; i < _melSetup->melFiltersCount; i++) {
+        MelFilterBank bank = _melSetup->melFilters[i];
+        
+        float sumWeight = 0.0;
+        for (int j = 0; j < bank.fftNodesCount; j++) {
+            sumWeight += bank.weights[j];
+        }
+        sumWeight /= bank.fftNodesCount;
+        
+        [marr addObject:[NSString stringWithFormat:@"%@ - %@ - %@ - %2.2f", @(bank.startFFTNode), @(bank.centerFFTNode), @(bank.startFFTNode + bank.fftNodesCount), sumWeight]];
+    }
+    NSLog(@"%@", marr);// N(2) = log2(fftSize) + 1
+    NSLog(@"mel count = %lu", (unsigned long)_melSetup->melFiltersCount);
 }
 
 - (void)setPlotView:(PlotView *)plotView
 {
     _plotView = plotView;
     
-    _fftSize = FFT_SIZE;
+    int32_t melFiltersCount = _melSetup->melFiltersCount;
+    int32_t fftSize = _melSetup->fftSize;
     
-    _melFiltersCount = 16;
-    _melFilters = (MelFilterBank*)calloc(_melFiltersCount, sizeof(MelFilterBank));
+    //display mel filter responces:
     
-    float fsz = _fftSize;
-    float neededBins = 16.0f;
-    float log2fCoef = (log2f(fsz))/(neededBins-1);
-    float expandCoef = 1.432;//powf(2.f, log2fCoef);
-    
-    NSMutableArray * marr = @[].mutableCopy;
-    int32_t index = 0;
-    float bins = 1.f;
-    int32_t melIndex = 0;
-    
-    do {
-        int iBins = (ceilf(bins));
-        [marr addObject:[NSString stringWithFormat:@"%@ - %@", @(iBins + 1), @(index)]];
-        _melFilters[melIndex].centerFFTNode = index;
-        _melFilters[melIndex].fftNodesCount = iBins + 1;
-        //        for (int i = 0; i < iBins; i++) {
-        index+= iBins;
-        //        }
-        bins = expandCoef * bins;
-        melIndex++;
-        //        bins = 2 * bins;
-    } while (index < _fftSize && melIndex < _melFiltersCount);
-    
-
-    for (int i = 0; i < _melFiltersCount; i++) {
-        
-        MelFilterBank * bank = _melFilters + i;
-        assert (bank->fftNodesCount);
-        NSInteger startNode = floorf(bank->centerFFTNode / 1.432);
-        NSInteger endNode = ceilf(bank->centerFFTNode * 1.432);
-        NSInteger nodesCount = endNode - startNode + 1;
-        
-        bank->weights = (float*)calloc(nodesCount, sizeof(float));
-        assert (bank->weights);
-        
-        if (nodesCount < 4) {
-            continue;//keep zeroed weight for single-node bands, i.e. for fftIndex == 0 and 1
-        }
-        
-        for (NSInteger j = startNode; j < endNode; j ++) {
-            NSInteger index = j - startNode;
-            NSInteger offset = bank->centerFFTNode - startNode;
-            bank->weights[index] = ((float)index)/((float)offset);
-        }
-        for (NSInteger j = bank->centerFFTNode; j < endNode; j ++) {
-            NSInteger index = j - startNode;
-            NSInteger offset = bank->centerFFTNode - startNode;
-            NSInteger width = endNode - bank->centerFFTNode;
-            float tan = 1.0f/((float)width);
-            bank->weights[index] = (-(float)(index - offset) * tan) + 1;
-        }
-        
-        for (int i = 0; i < nodesCount; i ++) {
-            bank->weights[i] *= 20.0f;
-        }
-        
-//        if (i == 15/* || i == 14*/)  {
-        PlotColor color = (PlotColor){1.0f, 1.0f, 1.0f, 1.0f};
-
-        float * buffer = (float*)calloc(nodesCount*2, sizeof(float));
-        for (int i = 0; i < nodesCount; i++) {
-            int index = i;
-            if (index < _fftSize) {
-                buffer[2*index] = (float)index + startNode;
-                buffer[2*index+1] = bank->weights[i];
-            }
-        }
-        
-        NSInteger line = [_plotView addLineChartWithName:@"weight" data:buffer length:nodesCount * 2 thickness:1 color:color];
-        [_plotView setData:buffer offset:0 ofLength:nodesCount * 2 forChart:line];
+//    for (int i = 0; i < melFiltersCount; i++) {
+//        PlotColor color = (PlotColor){1.0f, 1.0f, 1.0f, 1.0f};
+//        MelFilterBank bank = _melSetup->melFilters[i];
+//        float * buffer = (float*)calloc(bank.fftNodesCount * 2, sizeof(float));
+//        for (int i = 0; i < bank.fftNodesCount; i++) {
+//            int index = i;
+//            if (index < _melSetup->fftSize) {
+//                buffer[2*index] = (float)index + bank.startFFTNode;
+//                buffer[2*index+1] = bank.weights[i];
+//            }
 //        }
-    }
+//        NSInteger line = [_plotView addLineChartWithName:@"weight" data:buffer length:bank.fftNodesCount * 2 thickness:1 color:color];
+//        [_plotView setData:buffer offset:0 ofLength:bank.fftNodesCount * 2 forChart:line];
+//        free(buffer);
+//    }
     
+    //preps for live curves display:
     
-    NSLog(@"%@", marr);// N(2) = log2(fftSize) + 1
-    NSLog(@"count = %lu", (unsigned long)marr.count);
+    _vertexBuffer =    (float*)calloc(fftSize * 2, sizeof(float));
+    _vertexBufferMax = (float*)calloc(fftSize * 2, sizeof(float));
+    _vertexBufferMin = (float*)calloc(fftSize * 2, sizeof(float));
     
-    
-    _sizeLog2N = (vDSP_Length)log2((double)_fftSize);
-    
-    _fftSetup = vDSP_create_fftsetup(_sizeLog2N, kFFTDirection_Forward);
-    
-    _fftBuffer = (float*)calloc(_fftSize * 2, sizeof(float));
-    _avgBuffer = (float*)calloc(_fftSize * 2, sizeof(float));
-    _vertexBuffer = (float*)calloc(_fftSize * 2, sizeof(float));
-    _vertexBufferMax = (float*)calloc(_fftSize * 2, sizeof(float));
-    _vertexBufferMin = (float*)calloc(_fftSize * 2, sizeof(float));
-    
-    _melBuffer = (float*)calloc(16 * 2, sizeof(float));
-    
-    for (int i = 0; i < _fftSize; i ++) {
+    for (int i = 0; i < fftSize; i ++) {
         _vertexBuffer[i*2] = (float)i;
         _vertexBufferMax[i*2] = (float)i;
         _vertexBufferMin[i*2] = (float)i;
     }
     
-    _dataFlag = [self flagForFFTSize:_fftSize*2];
-    
-    _recorder = [[Recorder alloc] init];
-    
     PlotColor color    = (PlotColor){1.0f, 1.0f, 0.0f, 1.0f};
     PlotColor colorMax = (PlotColor){1.0f, 0.0f, 0.0f, 1.0f};
     PlotColor colorMin = (PlotColor){0.0f, 1.0f, 0.0f, 1.0f};
     
-    _lineMax = [_plotView addLineChartWithName:@"max" data:_vertexBuffer length:_melFiltersCount*2 thickness:1 color:colorMax];
-    _lineMin = [_plotView addLineChartWithName:@"min" data:_vertexBuffer length:_melFiltersCount*2 thickness:1 color:colorMin];
-    _line    = [_plotView addLineChartWithName:@"line" data:_vertexBuffer length:_melFiltersCount*2 thickness:2 color:color];
-    //    _line    = [_plotView addBarChartWithName:@"live" data:_vertexBuffer length:_fftSize*2 color1:color color2:color];
+    _lineMax = [_plotView addLineChartWithName:@"max" data:_vertexBuffer length:melFiltersCount * 2 thickness:1 color:colorMax];
+    _lineMin = [_plotView addLineChartWithName:@"min" data:_vertexBuffer length:melFiltersCount * 2 thickness:1 color:colorMin];
+    _line    = [_plotView addLineChartWithName:@"line" data:_vertexBuffer length:melFiltersCount * 2 thickness:2 color:color];
     
     PlotColor backColor = (PlotColor){0.0f, 0.0f, 0.0f, 1.0f};
     _plotView.chartsBackgroundColor = backColor;
     
-    float lineData[] = {-10.0f, 0.0f, (float)_fftSize + 10, 0.0f};
-    
-    //    PlotColor grayColor = (PlotColor){0.6f, 0.6f, 0.6f, 0.8f};
-    
-    //    [_plotView addLineChartWithName:@"hor" data:lineData length:4 thickness:2 color:grayColor];
-    
-    [_plotView setRangeMinX:-25 maxX:_fftSize+64 minY:-100 maxY:500];
-    [_plotView setVisibleRangeMinX:0 maxX:_melFiltersCount minY:-6 maxY:10];
-    _plotView.gridStepX = 25;
-    _plotView.gridStepY = 5.0;
+    [_plotView setRangeMinX:0 maxX:fftSize+64 minY:-100 maxY:500];
+    [_plotView setVisibleRangeMinX:0 maxX:melFiltersCount minY:5 maxY:10];
+    _plotView.gridStepX = 2.0f;
+    _plotView.gridStepY = 1.0f;
     
     [_plotView setScaleFontSize:12];
     [_plotView setWidth:20 forSide:PlotSideCount];
@@ -251,23 +196,27 @@ struct MelFilterBank {
     return dataFlag;
 }
 
-- (void)teardown
-{
-    [self stop];
-}
-
 - (void) start
 {
     [_recorder start];
+//    __block NSUInteger counter = 0;
+//    __block NSTimeInterval initTime = CFAbsoluteTimeGetCurrent();
     
     __weak typeof(self) weakSelf = self;
     _updateTimer = [GCDTimer scheduledTimerWithTimeInterval:0.010
-                                                    repeats:YES block:^{
-                                                        [weakSelf onTimer];
+                                                    repeats:YES
+                                                      block:^{
+//                                                          counter++;
+//                                                          NSTimeInterval curTime = CFAbsoluteTimeGetCurrent();
+//                                                          NSTimeInterval workTime = curTime - initTime;
+                                                          
+                                                          [weakSelf onTimer];
+//                                                          NSTimeInterval newTime = CFAbsoluteTimeGetCurrent();
+//                                                          NSLog(@"anim: %2.4f", 1000 * (newTime - curTime));
                                                     }];
     BASS_CHANNELINFO info = {0};
-    NSUInteger sr = BASS_ChannelGetInfo(_recorder.recChannel, &info);
-    NSLog(@"Recording with SR: %u, minFreq = %lu", info.freq, info.freq/_fftSize);
+    BASS_ChannelGetInfo(_recorder.recChannel, &info);
+    NSLog(@"Recording with SR: %u, minFreq = %u", info.freq, info.freq/_melSetup->fftSize);
 }
 
 - (void) stop
@@ -278,81 +227,121 @@ struct MelFilterBank {
 
 - (void)onTimer
 {
-    HRECORD recChannel = _recorder.recChannel;
-    DWORD recieved = BASS_ChannelGetData(recChannel, _fftBuffer, _dataFlag);
-    //    NSLog(@"Received: %u", recieved/sizeof(float));
+    BASS_ChannelGetData(_recorder.recChannel, _melSetup->fftBuffer, _bassDataFlag);
+
+    on_fft_to_mel_transform(_melSetup, _melSetup->fftBuffer, _melSetup->fftSize);
+    on_mag_log_do(_logTransform, _melSetup->melOutBuffer, _melSetup->melFiltersCount);
     
-    for(int i = 0; i < _melFiltersCount; i++) {
-        MelFilterBank bank = _melFilters[i];
-        assert(bank.weights);
-        float bandSum = 0.0;
-        for (int j = 0; j < bank.fftNodesCount; j++) {
-            int indexInFFT = j + bank.centerFFTNode;
-            float weight = bank.weights[j];
-            bandSum = bandSum + weight * _fftBuffer[indexInFFT];
-        }
-        _melBuffer[i] = bandSum;
-    }
+    int omit_bands = 2;
+    int omit_poles = omit_bands * 2;
     
-    float B = 1.0f;//0.0025f;
-    vDSP_vdbcon(_melBuffer, 1, &B, _melBuffer, 1, _melFiltersCount, 1);
-    
-//    B = 0.001f;
-//    vDSP_vsmul(_melBuffer, 1, &B, _melBuffer, 1, _melFiltersCount);
-    
-//    NSInteger index = 0;
-//    NSInteger bins = 1;
-//    while (index < _fftSize) {
-//
-//        for (int i = 0; i < bins; i++) {
-//            index++;
-//        }
-//        bins = 2 * bins;
-//    }
-    
-//    float mean = 0.0;
-//    vDSP_meanv(_avgBuffer, 1, &mean, _fftSize);
-//    mean = -mean;
-    
-//    vDSP_vsadd(_avgBuffer, 1, &mean, _avgBuffer, 1, _fftSize);
-    
-    //    B = 10.0f;
-    //    vDSP_vsadd(_fftBuffer, 1, &B, _fftBuffer, 1, _fftSize);
-    
-    //    for (int i = 0; i < _fftSize; i++) {
-    //        float newVal = _fftBuffer[i] * 0.1f + _avgBuffer[i] * 0.9f;
-    //        _avgBuffer[i] = newVal;
-    ////        _vertexBuffer[2*i+1] = newVal;
-    //    }
-    
-//    DSPSplitComplex complexIn;
-//    complexIn.realp = _avgBuffer;
-//    complexIn.imagp = _avgBuffer + _fftSize;
-//
-//    DSPSplitComplex complexOut;
-//    complexOut.realp = _fftBuffer;
-//    complexOut.imagp = _fftBuffer + _fftSize;
-//
-//    vDSP_fft_zop(_fftSetup, &complexIn, 1, &complexOut, 1, _sizeLog2N, kFFTDirection_Forward);
-    
-    //    vDSP_zvmags(&complexOut, 1, _fftBuffer, 1, _fftSize);
-    
-    for (int i = 0; i < _melFiltersCount; i++) {
+    for (int i = 0; i < _melSetup->melFiltersCount; i++) {
         int j = i * 2 + 1;
-        if (isnan(_melBuffer[i])) {
+        if (isnan(_melSetup->melOutBuffer[i])) {
             continue;
         }
-        _vertexBuffer[j] = 0.08f * _melBuffer[i] + 0.92f * _vertexBuffer[j];// = _fftBuffer[i]/10 + 10;
+        if (isinf(_melSetup->melOutBuffer[i])) {
+            continue;
+        }
+        _vertexBuffer[j] = 0.5f * _melSetup->melOutBuffer[i] + 0.5f * _vertexBuffer[j];// = _fftBuffer[i]/10 + 10;
         if (_vertexBuffer[j] > _vertexBufferMax[j]) _vertexBufferMax[j] = _vertexBuffer[j];
         else _vertexBufferMax[j] = 0.01f * _vertexBuffer[j] + 0.99f * _vertexBufferMax[j];
         if (_vertexBuffer[j] < _vertexBufferMin[j]) _vertexBufferMin[j] = _vertexBuffer[j];
         else _vertexBufferMin[j] = 0.01f * _vertexBuffer[j] + 0.99f * _vertexBufferMin[j];
-        //        _vertexBufferMin[j] = 0.2f * _fftBuffer[_fftSize+i] + 0.8f * _vertexBuffer[j];
     }
-    [_plotView setData:_vertexBuffer    offset:0 ofLength:_melFiltersCount * 2 forChart:_line];
-    [_plotView setData:_vertexBufferMax offset:0 ofLength:_melFiltersCount * 2 forChart:_lineMax];
-    [_plotView setData:_vertexBufferMin offset:0 ofLength:_melFiltersCount * 2 forChart:_lineMin];
+    
+    NSUInteger lengthToDraw = _melSetup->melFiltersCount * 2 - omit_poles;
+    
+    [_plotView setData:_vertexBuffer + omit_poles    offset:0 ofLength:lengthToDraw forChart:_line];
+    [_plotView setData:_vertexBufferMax + omit_poles offset:0 ofLength:lengthToDraw forChart:_lineMax];
+    [_plotView setData:_vertexBufferMin + omit_poles offset:0 ofLength:lengthToDraw forChart:_lineMin];
     [_plotView update:nil];
 }
+
+
+
+//void fftToMel(MelFilterBank * filters, float * outMelBuffer, long melBufferSize, float * inputFFTBuffer, long fftBufferSize)
+//{
+//    for(int i = 0; i < melBufferSize; i++) {
+//        MelFilterBank bank = filters[i];
+//        assert(bank.weights);
+//        float bandSum = 0.0;
+//        for (int j = 0; j < bank.fftNodesCount; j++) {
+//            int indexInFFT = j + bank.startFFTNode;
+//            float weight = bank.weights[j];
+//            bandSum = bandSum + weight * inputFFTBuffer[indexInFFT];
+//        }
+//        outMelBuffer[i] = bandSum;
+//    }
+//
+//    float B = 1.0f;//0.0025f;
+//    vDSP_vdbcon(outMelBuffer, 1, &B, outMelBuffer, 1, melBufferSize, 1);
+//}
+
+//
+//- (void)onTimer2
+//{
+//    HRECORD recChannel = _recorder.recChannel;
+//    DWORD recieved = BASS_ChannelGetData(recChannel, _fftBuffer, _dataFlag);
+//
+//    fftToMel(_melFilters, _melBuffer, _melFiltersCount, _fftBuffer, _fftSize);
+//
+////    B = 0.001f;
+////    vDSP_vsmul(_melBuffer, 1, &B, _melBuffer, 1, _melFiltersCount);
+//
+////    NSInteger index = 0;
+////    NSInteger bins = 1;
+////    while (index < _fftSize) {
+////
+////        for (int i = 0; i < bins; i++) {
+////            index++;
+////        }
+////        bins = 2 * bins;
+////    }
+//
+////    float mean = 0.0;
+////    vDSP_meanv(_avgBuffer, 1, &mean, _fftSize);
+////    mean = -mean;
+//
+////    vDSP_vsadd(_avgBuffer, 1, &mean, _avgBuffer, 1, _fftSize);
+//
+//    //    B = 10.0f;
+//    //    vDSP_vsadd(_fftBuffer, 1, &B, _fftBuffer, 1, _fftSize);
+//
+//    //    for (int i = 0; i < _fftSize; i++) {
+//    //        float newVal = _fftBuffer[i] * 0.1f + _avgBuffer[i] * 0.9f;
+//    //        _avgBuffer[i] = newVal;
+//    ////        _vertexBuffer[2*i+1] = newVal;
+//    //    }
+//
+////    DSPSplitComplex complexIn;
+////    complexIn.realp = _avgBuffer;
+////    complexIn.imagp = _avgBuffer + _fftSize;
+////
+////    DSPSplitComplex complexOut;
+////    complexOut.realp = _fftBuffer;
+////    complexOut.imagp = _fftBuffer + _fftSize;
+////
+////    vDSP_fft_zop(_fftSetup, &complexIn, 1, &complexOut, 1, _sizeLog2N, kFFTDirection_Forward);
+//
+//    //    vDSP_zvmags(&complexOut, 1, _fftBuffer, 1, _fftSize);
+//
+//    for (int i = 0; i < _melFiltersCount; i++) {
+//        int j = i * 2 + 1;
+//        if (isnan(_melBuffer[i])) {//} || isinf(_melBuffer[i])) {
+//            continue;
+//        }
+//        _vertexBuffer[j] = _melBuffer[i];//0.08f * _melBuffer[i] + 0.92f * _vertexBuffer[j];// = _fftBuffer[i]/10 + 10;
+//        if (_vertexBuffer[j] > _vertexBufferMax[j]) _vertexBufferMax[j] = _vertexBuffer[j];
+//        else _vertexBufferMax[j] = 0.01f * _vertexBuffer[j] + 0.99f * _vertexBufferMax[j];
+//        if (_vertexBuffer[j] < _vertexBufferMin[j]) _vertexBufferMin[j] = _vertexBuffer[j];
+//        else _vertexBufferMin[j] = 0.01f * _vertexBuffer[j] + 0.99f * _vertexBufferMin[j];
+//        //        _vertexBufferMin[j] = 0.2f * _fftBuffer[_fftSize+i] + 0.8f * _vertexBuffer[j];
+//    }
+//    [_plotView setData:_vertexBuffer    offset:0 ofLength:_melFiltersCount * 2 forChart:_line];
+//    [_plotView setData:_vertexBufferMax offset:0 ofLength:_melFiltersCount * 2 forChart:_lineMax];
+//    [_plotView setData:_vertexBufferMin offset:0 ofLength:_melFiltersCount * 2 forChart:_lineMin];
+//    [_plotView update:nil];
+//}
 
 @end
