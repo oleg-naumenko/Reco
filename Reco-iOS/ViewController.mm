@@ -59,7 +59,7 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [_analyzer teardown];
+    [_analyzer stop];
 }
 
 

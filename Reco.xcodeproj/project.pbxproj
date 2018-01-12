@@ -19,6 +19,11 @@
 		7C1D68501FA3661600BF8218 /* Recorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C1D684F1FA3661600BF8218 /* Recorder.mm */; };
 		7C1D68531FA36C2500BF8218 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1D68521FA36C1100BF8218 /* AppKit.framework */; };
 		7C1D68551FA36C2C00BF8218 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1D68541FA36C2A00BF8218 /* OpenGL.framework */; };
+		7C220F692008F9940056EBDB /* SpectrogramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C220F682008F9940056EBDB /* SpectrogramViewController.m */; };
+		7C220F6C2008FD070056EBDB /* RecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C220F6B2008FD070056EBDB /* RecorderViewController.m */; };
+		7C220F6F200901380056EBDB /* libbassenc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; };
+		7C220F70200901380056EBDB /* libbassenc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; };
+		7C220F71200901510056EBDB /* libbassenc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7C638FB31FA378F400964BAA /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C638FB21FA378F000964BAA /* Accelerate.framework */; };
 		7C638FE61FA382F300964BAA /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C638FE41FA382F200964BAA /* GCDTimer.m */; };
 		7C7B8EF91FBB4DD80009AC47 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EF71FBB4DD80009AC47 /* AudioToolbox.framework */; };
@@ -33,6 +38,28 @@
 		7CC3AEEE20079AC400E22624 /* on_fft_to_mel.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */; };
 		7CC3AEF12007B60200E22624 /* on_mag_to_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEF02007B60200E22624 /* on_mag_to_log.c */; };
 		7CC3AEF22007B60200E22624 /* on_mag_to_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEF02007B60200E22624 /* on_mag_to_log.c */; };
+		7CC3AEFC2008C3D700E22624 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEFB2008C3D700E22624 /* AppDelegate.m */; };
+		7CC3AEFF2008C3D700E22624 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEFE2008C3D700E22624 /* ViewController.m */; };
+		7CC3AF012008C3D700E22624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3AF002008C3D700E22624 /* Assets.xcassets */; };
+		7CC3AF042008C3D700E22624 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3AF022008C3D700E22624 /* Main.storyboard */; };
+		7CC3AF072008C3D700E22624 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF062008C3D700E22624 /* main.m */; };
+		7CC3AF122008C3D800E22624 /* VoiceGraphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF112008C3D800E22624 /* VoiceGraphTests.m */; };
+		7CC3AF1A2008C3FF00E22624 /* on_fft_to_mel.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */; };
+		7CC3AF1B2008C3FF00E22624 /* on_mag_to_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEF02007B60200E22624 /* on_mag_to_log.c */; };
+		7CC3AF1E2008C9E100E22624 /* FileAnalyser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF1D2008C9E100E22624 /* FileAnalyser.m */; };
+		7CC3AF212008CAE100E22624 /* Spectrogram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF202008CAE100E22624 /* Spectrogram.m */; };
+		7CC3AF242008CF6B00E22624 /* libbass.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1D684A1FA365DB00BF8218 /* libbass.dylib */; };
+		7CC3AF262008CF7A00E22624 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC3AF252008CF7A00E22624 /* CoreAudio.framework */; };
+		7CC3AF282008CF8000E22624 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC3AF272008CF8000E22624 /* AudioToolbox.framework */; };
+		7CC3AF2A2008CF8A00E22624 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC3AF292008CF8A00E22624 /* Security.framework */; };
+		7CC3AF2B2008CF9000E22624 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C638FB21FA378F000964BAA /* Accelerate.framework */; };
+		7CC3AF2C2008CFA400E22624 /* libbass.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C1D684A1FA365DB00BF8218 /* libbass.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7CC3AF2F2008D7DF00E22624 /* bass_fft_size.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF2E2008D7DF00E22624 /* bass_fft_size.c */; };
+		7CC3AF302008D7DF00E22624 /* bass_fft_size.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF2E2008D7DF00E22624 /* bass_fft_size.c */; };
+		7CC3AF312008D7DF00E22624 /* bass_fft_size.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF2E2008D7DF00E22624 /* bass_fft_size.c */; };
+		7CC3AF342008E3D700E22624 /* SpectrogramView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF332008E3D700E22624 /* SpectrogramView.m */; };
+		7CC3AF352008E3D700E22624 /* SpectrogramView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF332008E3D700E22624 /* SpectrogramView.m */; };
+		7CC3AF362008E3D700E22624 /* SpectrogramView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AF332008E3D700E22624 /* SpectrogramView.m */; };
 		7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07BB1FBB49A600D5DAD1 /* AppDelegate.m */; };
 		7CEC07BF1FBB49A600D5DAD1 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC07BE1FBB49A600D5DAD1 /* ViewController.mm */; };
 		7CEC07C21FBB49A600D5DAD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CEC07C01FBB49A600D5DAD1 /* Main.storyboard */; };
@@ -58,6 +85,13 @@
 			remoteGlobalIDString = 7C1D68171FA3625300BF8218;
 			remoteInfo = Reco;
 		};
+		7CC3AF0E2008C3D800E22624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C1D68101FA3625300BF8218 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CC3AEF72008C3D700E22624;
+			remoteInfo = VoiceGraph;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +102,17 @@
 			dstSubfolderSpec = 6;
 			files = (
 				7C1D684D1FA3660000BF8218 /* libbass.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC3AF222008CF4E00E22624 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				7C220F71200901510056EBDB /* libbassenc.dylib in CopyFiles */,
+				7CC3AF2C2008CFA400E22624 /* libbass.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +142,12 @@
 		7C1D68521FA36C1100BF8218 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7C1D68541FA36C2A00BF8218 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		7C1D68581FA36D9600BF8218 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7C220F672008F9940056EBDB /* SpectrogramViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectrogramViewController.h; sourceTree = "<group>"; };
+		7C220F682008F9940056EBDB /* SpectrogramViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogramViewController.m; sourceTree = "<group>"; };
+		7C220F6A2008FD070056EBDB /* RecorderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecorderViewController.h; sourceTree = "<group>"; };
+		7C220F6B2008FD070056EBDB /* RecorderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecorderViewController.m; sourceTree = "<group>"; };
+		7C220F6D200901380056EBDB /* bassenc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bassenc.h; path = "bass24-osx/bassenc.h"; sourceTree = SOURCE_ROOT; };
+		7C220F6E200901380056EBDB /* libbassenc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbassenc.dylib; path = "bass24-osx/libbassenc.dylib"; sourceTree = SOURCE_ROOT; };
 		7C638FB21FA378F000964BAA /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7C638FE41FA382F200964BAA /* GCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDTimer.m; path = Common/GCDTimer.m; sourceTree = SOURCE_ROOT; };
 		7C638FE51FA382F300964BAA /* GCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDTimer.h; path = Common/GCDTimer.h; sourceTree = SOURCE_ROOT; };
@@ -112,6 +163,30 @@
 		7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = on_fft_to_mel.c; sourceTree = "<group>"; };
 		7CC3AEEF2007B60200E22624 /* on_mag_to_log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = on_mag_to_log.h; sourceTree = "<group>"; };
 		7CC3AEF02007B60200E22624 /* on_mag_to_log.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = on_mag_to_log.c; sourceTree = "<group>"; };
+		7CC3AEF82008C3D700E22624 /* VoiceGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CC3AEFA2008C3D700E22624 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7CC3AEFB2008C3D700E22624 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7CC3AEFD2008C3D700E22624 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7CC3AEFE2008C3D700E22624 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7CC3AF002008C3D700E22624 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CC3AF032008C3D700E22624 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7CC3AF052008C3D700E22624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC3AF062008C3D700E22624 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7CC3AF082008C3D700E22624 /* VoiceGraph.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoiceGraph.entitlements; sourceTree = "<group>"; };
+		7CC3AF0D2008C3D700E22624 /* VoiceGraphTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceGraphTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CC3AF112008C3D800E22624 /* VoiceGraphTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoiceGraphTests.m; sourceTree = "<group>"; };
+		7CC3AF132008C3D800E22624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC3AF1C2008C9E100E22624 /* FileAnalyser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileAnalyser.h; sourceTree = "<group>"; };
+		7CC3AF1D2008C9E100E22624 /* FileAnalyser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileAnalyser.m; sourceTree = "<group>"; };
+		7CC3AF1F2008CAE100E22624 /* Spectrogram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Spectrogram.h; sourceTree = "<group>"; };
+		7CC3AF202008CAE100E22624 /* Spectrogram.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spectrogram.m; sourceTree = "<group>"; };
+		7CC3AF252008CF7A00E22624 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		7CC3AF272008CF8000E22624 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7CC3AF292008CF8A00E22624 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7CC3AF2D2008D7DF00E22624 /* bass_fft_size.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bass_fft_size.h; sourceTree = "<group>"; };
+		7CC3AF2E2008D7DF00E22624 /* bass_fft_size.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bass_fft_size.c; sourceTree = "<group>"; };
+		7CC3AF322008E3D700E22624 /* SpectrogramView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectrogramView.h; sourceTree = "<group>"; };
+		7CC3AF332008E3D700E22624 /* SpectrogramView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogramView.m; sourceTree = "<group>"; };
 		7CEC07B81FBB49A600D5DAD1 /* Reco-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reco-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEC07BA1FBB49A600D5DAD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7CEC07BB1FBB49A600D5DAD1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -137,6 +212,7 @@
 			files = (
 				7C1D684B1FA365DC00BF8218 /* libbass.dylib in Frameworks */,
 				7C638FB31FA378F400964BAA /* Accelerate.framework in Frameworks */,
+				7C220F6F200901380056EBDB /* libbassenc.dylib in Frameworks */,
 				7C1D68531FA36C2500BF8218 /* AppKit.framework in Frameworks */,
 				7C1D68551FA36C2C00BF8218 /* OpenGL.framework in Frameworks */,
 				4520614DD71B700899285920 /* Pods_Reco.framework in Frameworks */,
@@ -144,6 +220,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7C1D68281FA3625300BF8218 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC3AEF52008C3D700E22624 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC3AF2B2008CF9000E22624 /* Accelerate.framework in Frameworks */,
+				7CC3AF2A2008CF8A00E22624 /* Security.framework in Frameworks */,
+				7CC3AF282008CF8000E22624 /* AudioToolbox.framework in Frameworks */,
+				7CC3AF262008CF7A00E22624 /* CoreAudio.framework in Frameworks */,
+				7C220F70200901380056EBDB /* libbassenc.dylib in Frameworks */,
+				7CC3AF242008CF6B00E22624 /* libbass.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC3AF0A2008C3D700E22624 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -175,6 +271,8 @@
 				7C1D681A1FA3625300BF8218 /* Reco */,
 				7CEC07B91FBB49A600D5DAD1 /* Reco-iOS */,
 				7C1D682E1FA3625300BF8218 /* RecoTests */,
+				7CC3AEF92008C3D700E22624 /* VoiceGraph */,
+				7CC3AF102008C3D800E22624 /* VoiceGraphTests */,
 				7C1D68191FA3625300BF8218 /* Products */,
 				7C1D68511FA36C1100BF8218 /* Frameworks */,
 				91724CE8935A792256DA658B /* Pods */,
@@ -187,6 +285,8 @@
 				7C1D68181FA3625300BF8218 /* Reco.app */,
 				7C1D682B1FA3625300BF8218 /* RecoTests.xctest */,
 				7CEC07B81FBB49A600D5DAD1 /* Reco-iOS.app */,
+				7CC3AEF82008C3D700E22624 /* VoiceGraph.app */,
+				7CC3AF0D2008C3D700E22624 /* VoiceGraphTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,6 +301,8 @@
 				7C1D681E1FA3625300BF8218 /* Assets.xcassets */,
 				7C1D68491FA365D100BF8218 /* bass.h */,
 				7C1D684A1FA365DB00BF8218 /* libbass.dylib */,
+				7C220F6D200901380056EBDB /* bassenc.h */,
+				7C220F6E200901380056EBDB /* libbassenc.dylib */,
 				7CEC07D81FBB4D7300D5DAD1 /* libbass.a */,
 				7C1D68201FA3625300BF8218 /* MainMenu.xib */,
 				7C1D68231FA3625300BF8218 /* Info.plist */,
@@ -222,6 +324,9 @@
 		7C1D68511FA36C1100BF8218 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CC3AF292008CF8A00E22624 /* Security.framework */,
+				7CC3AF272008CF8000E22624 /* AudioToolbox.framework */,
+				7CC3AF252008CF7A00E22624 /* CoreAudio.framework */,
 				7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */,
 				7C7B8EFF1FBB4DEC0009AC47 /* Security.framework */,
 				7C7B8EFD1FBB4DE50009AC47 /* SystemConfiguration.framework */,
@@ -236,6 +341,54 @@
 				91342E26EAE8A2F7B91A0A30 /* Pods_Reco_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CC3AEF32008B73100E22624 /* OnDSP */ = {
+			isa = PBXGroup;
+			children = (
+				7CC3AEEB20078FE300E22624 /* on_fft_to_mel.h */,
+				7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */,
+				7CC3AEEF2007B60200E22624 /* on_mag_to_log.h */,
+				7CC3AEF02007B60200E22624 /* on_mag_to_log.c */,
+				7CC3AF2D2008D7DF00E22624 /* bass_fft_size.h */,
+				7CC3AF2E2008D7DF00E22624 /* bass_fft_size.c */,
+			);
+			path = OnDSP;
+			sourceTree = "<group>";
+		};
+		7CC3AEF92008C3D700E22624 /* VoiceGraph */ = {
+			isa = PBXGroup;
+			children = (
+				7CC3AEFA2008C3D700E22624 /* AppDelegate.h */,
+				7CC3AEFB2008C3D700E22624 /* AppDelegate.m */,
+				7CC3AEFD2008C3D700E22624 /* ViewController.h */,
+				7CC3AEFE2008C3D700E22624 /* ViewController.m */,
+				7CC3AF1C2008C9E100E22624 /* FileAnalyser.h */,
+				7CC3AF1D2008C9E100E22624 /* FileAnalyser.m */,
+				7CC3AF322008E3D700E22624 /* SpectrogramView.h */,
+				7CC3AF332008E3D700E22624 /* SpectrogramView.m */,
+				7C220F672008F9940056EBDB /* SpectrogramViewController.h */,
+				7C220F682008F9940056EBDB /* SpectrogramViewController.m */,
+				7CC3AF1F2008CAE100E22624 /* Spectrogram.h */,
+				7CC3AF202008CAE100E22624 /* Spectrogram.m */,
+				7CC3AF002008C3D700E22624 /* Assets.xcassets */,
+				7CC3AF022008C3D700E22624 /* Main.storyboard */,
+				7CC3AF052008C3D700E22624 /* Info.plist */,
+				7CC3AF062008C3D700E22624 /* main.m */,
+				7CC3AF082008C3D700E22624 /* VoiceGraph.entitlements */,
+				7C220F6A2008FD070056EBDB /* RecorderViewController.h */,
+				7C220F6B2008FD070056EBDB /* RecorderViewController.m */,
+			);
+			path = VoiceGraph;
+			sourceTree = "<group>";
+		};
+		7CC3AF102008C3D800E22624 /* VoiceGraphTests */ = {
+			isa = PBXGroup;
+			children = (
+				7CC3AF112008C3D800E22624 /* VoiceGraphTests.m */,
+				7CC3AF132008C3D800E22624 /* Info.plist */,
+			);
+			path = VoiceGraphTests;
 			sourceTree = "<group>";
 		};
 		7CEC07B91FBB49A600D5DAD1 /* Reco-iOS */ = {
@@ -257,6 +410,7 @@
 		7CEC07CE1FBB4A5800D5DAD1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7CC3AEF32008B73100E22624 /* OnDSP */,
 				7CEC07CF1FBB4A7200D5DAD1 /* Analyzer.h */,
 				7CEC07D01FBB4A7200D5DAD1 /* Analyzer.mm */,
 				7C8701072004DB72001E597B /* MelAnalyzer.h */,
@@ -265,10 +419,6 @@
 				7C1D684F1FA3661600BF8218 /* Recorder.mm */,
 				7C638FE51FA382F300964BAA /* GCDTimer.h */,
 				7C638FE41FA382F200964BAA /* GCDTimer.m */,
-				7CC3AEEB20078FE300E22624 /* on_fft_to_mel.h */,
-				7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */,
-				7CC3AEEF2007B60200E22624 /* on_mag_to_log.h */,
-				7CC3AEF02007B60200E22624 /* on_mag_to_log.c */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -326,6 +476,42 @@
 			productReference = 7C1D682B1FA3625300BF8218 /* RecoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7CC3AEF72008C3D700E22624 /* VoiceGraph */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CC3AF142008C3D800E22624 /* Build configuration list for PBXNativeTarget "VoiceGraph" */;
+			buildPhases = (
+				7CC3AEF42008C3D700E22624 /* Sources */,
+				7CC3AEF52008C3D700E22624 /* Frameworks */,
+				7CC3AEF62008C3D700E22624 /* Resources */,
+				7CC3AF222008CF4E00E22624 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VoiceGraph;
+			productName = VoiceGraph;
+			productReference = 7CC3AEF82008C3D700E22624 /* VoiceGraph.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7CC3AF0C2008C3D700E22624 /* VoiceGraphTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CC3AF172008C3D800E22624 /* Build configuration list for PBXNativeTarget "VoiceGraphTests" */;
+			buildPhases = (
+				7CC3AF092008C3D700E22624 /* Sources */,
+				7CC3AF0A2008C3D700E22624 /* Frameworks */,
+				7CC3AF0B2008C3D700E22624 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CC3AF0F2008C3D800E22624 /* PBXTargetDependency */,
+			);
+			name = VoiceGraphTests;
+			productName = VoiceGraphTests;
+			productReference = 7CC3AF0D2008C3D700E22624 /* VoiceGraphTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7CEC07B71FBB49A600D5DAD1 /* Reco-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CEC07CD1FBB49A600D5DAD1 /* Build configuration list for PBXNativeTarget "Reco-iOS" */;
@@ -364,6 +550,20 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 7C1D68171FA3625300BF8218;
 					};
+					7CC3AEF72008C3D700E22624 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+					7CC3AF0C2008C3D700E22624 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7CC3AEF72008C3D700E22624;
+					};
 					7CEC07B71FBB49A600D5DAD1 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -384,8 +584,10 @@
 			projectRoot = "";
 			targets = (
 				7C1D68171FA3625300BF8218 /* Reco */,
-				7C1D682A1FA3625300BF8218 /* RecoTests */,
 				7CEC07B71FBB49A600D5DAD1 /* Reco-iOS */,
+				7C1D682A1FA3625300BF8218 /* RecoTests */,
+				7CC3AEF72008C3D700E22624 /* VoiceGraph */,
+				7CC3AF0C2008C3D700E22624 /* VoiceGraphTests */,
 			);
 		};
 /* End PBXProject section */
@@ -401,6 +603,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7C1D68291FA3625300BF8218 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC3AEF62008C3D700E22624 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC3AF012008C3D700E22624 /* Assets.xcassets in Resources */,
+				7CC3AF042008C3D700E22624 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC3AF0B2008C3D700E22624 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -531,6 +749,8 @@
 			files = (
 				7C1D68481FA363DF00BF8218 /* MyViewController.mm in Sources */,
 				7C1D68251FA3625300BF8218 /* main.m in Sources */,
+				7CC3AF342008E3D700E22624 /* SpectrogramView.m in Sources */,
+				7CC3AF2F2008D7DF00E22624 /* bass_fft_size.c in Sources */,
 				7C1D681D1FA3625300BF8218 /* AppDelegate.m in Sources */,
 				7CC3AEED20078FE300E22624 /* on_fft_to_mel.c in Sources */,
 				7C1D68501FA3661600BF8218 /* Recorder.mm in Sources */,
@@ -552,12 +772,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7CC3AEF42008C3D700E22624 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC3AF1E2008C9E100E22624 /* FileAnalyser.m in Sources */,
+				7CC3AEFF2008C3D700E22624 /* ViewController.m in Sources */,
+				7CC3AF362008E3D700E22624 /* SpectrogramView.m in Sources */,
+				7CC3AF312008D7DF00E22624 /* bass_fft_size.c in Sources */,
+				7CC3AF072008C3D700E22624 /* main.m in Sources */,
+				7CC3AF212008CAE100E22624 /* Spectrogram.m in Sources */,
+				7C220F6C2008FD070056EBDB /* RecorderViewController.m in Sources */,
+				7C220F692008F9940056EBDB /* SpectrogramViewController.m in Sources */,
+				7CC3AEFC2008C3D700E22624 /* AppDelegate.m in Sources */,
+				7CC3AF1B2008C3FF00E22624 /* on_mag_to_log.c in Sources */,
+				7CC3AF1A2008C3FF00E22624 /* on_fft_to_mel.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC3AF092008C3D700E22624 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC3AF122008C3D800E22624 /* VoiceGraphTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CEC07B41FBB49A600D5DAD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7CEC07D61FBB4AAF00D5DAD1 /* GCDTimer.m in Sources */,
 				7CEC07BF1FBB49A600D5DAD1 /* ViewController.mm in Sources */,
+				7CC3AF352008E3D700E22624 /* SpectrogramView.m in Sources */,
+				7CC3AF302008D7DF00E22624 /* bass_fft_size.c in Sources */,
 				7CEC07CA1FBB49A600D5DAD1 /* main.m in Sources */,
 				7CC3AEEE20079AC400E22624 /* on_fft_to_mel.c in Sources */,
 				7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */,
@@ -576,6 +824,11 @@
 			target = 7C1D68171FA3625300BF8218 /* Reco */;
 			targetProxy = 7C1D682C1FA3625300BF8218 /* PBXContainerItemProxy */;
 		};
+		7CC3AF0F2008C3D800E22624 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CC3AEF72008C3D700E22624 /* VoiceGraph */;
+			targetProxy = 7CC3AF0E2008C3D800E22624 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -585,6 +838,14 @@
 				7C1D68211FA3625300BF8218 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		7CC3AF022008C3D700E22624 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CC3AF032008C3D700E22624 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		7CEC07C01FBB49A600D5DAD1 /* Main.storyboard */ = {
@@ -779,6 +1040,76 @@
 			};
 			name = Release;
 		};
+		7CC3AF152008C3D800E22624 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZA6S8VA4XW;
+				INFOPLIST_FILE = VoiceGraph/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/bass24-osx",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.naumenko.VoiceGraph;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7CC3AF162008C3D800E22624 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZA6S8VA4XW;
+				INFOPLIST_FILE = VoiceGraph/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/bass24-osx",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.naumenko.VoiceGraph;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7CC3AF182008C3D800E22624 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZA6S8VA4XW;
+				INFOPLIST_FILE = VoiceGraphTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.naumenko.VoiceGraphTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceGraph.app/Contents/MacOS/VoiceGraph";
+			};
+			name = Debug;
+		};
+		7CC3AF192008C3D800E22624 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZA6S8VA4XW;
+				INFOPLIST_FILE = VoiceGraphTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.naumenko.VoiceGraphTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceGraph.app/Contents/MacOS/VoiceGraph";
+			};
+			name = Release;
+		};
 		7CEC07CB1FBB49A600D5DAD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 889D98C44BA24E75B0A3EECF /* Pods-Reco-iOS.debug.xcconfig */;
@@ -852,6 +1183,24 @@
 			buildConfigurations = (
 				7C1D68381FA3625300BF8218 /* Debug */,
 				7C1D68391FA3625300BF8218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CC3AF142008C3D800E22624 /* Build configuration list for PBXNativeTarget "VoiceGraph" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC3AF152008C3D800E22624 /* Debug */,
+				7CC3AF162008C3D800E22624 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CC3AF172008C3D800E22624 /* Build configuration list for PBXNativeTarget "VoiceGraphTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC3AF182008C3D800E22624 /* Debug */,
+				7CC3AF192008C3D800E22624 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
