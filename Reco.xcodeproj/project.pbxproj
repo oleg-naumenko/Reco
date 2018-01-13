@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		7C220F6F200901380056EBDB /* libbassenc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; };
 		7C220F70200901380056EBDB /* libbassenc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; };
 		7C220F71200901510056EBDB /* libbassenc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7C2224C7200913FB004ED169 /* libbassenc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7C638FB31FA378F400964BAA /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C638FB21FA378F000964BAA /* Accelerate.framework */; };
 		7C638FE61FA382F300964BAA /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C638FE41FA382F200964BAA /* GCDTimer.m */; };
 		7C7B8EF91FBB4DD80009AC47 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EF71FBB4DD80009AC47 /* AudioToolbox.framework */; };
@@ -101,6 +102,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
+				7C2224C7200913FB004ED169 /* libbassenc.dylib in CopyFiles */,
 				7C1D684D1FA3660000BF8218 /* libbass.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,6 +554,7 @@
 					};
 					7CC3AEF72008C3D700E22624 = {
 						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = ZA6S8VA4XW;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -561,17 +564,19 @@
 					};
 					7CC3AF0C2008C3D700E22624 = {
 						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = ZA6S8VA4XW;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 7CC3AEF72008C3D700E22624;
 					};
 					7CEC07B71FBB49A600D5DAD1 = {
 						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = ZA6S8VA4XW;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 7C1D68131FA3625300BF8218 /* Build configuration list for PBXProject "Reco" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1054,6 +1059,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/bass24-osx",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naumenko.VoiceGraph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1073,6 +1079,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/bass24-osx",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naumenko.VoiceGraph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
