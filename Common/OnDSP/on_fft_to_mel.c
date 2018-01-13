@@ -76,12 +76,13 @@ on_fft_to_mel_setup * on_fft_to_mel_init(int32_t fftSize)
             bank->weights[index] = (-(float)(index - offset) * tan) + 1;
         }
         
-        float gain = 20;// * ((float)(bank->centerFFTNode - bank->startFFTNode))/((float)bank->fftNodesCount); //((i+1 == _melFiltersCount) ? 1.75f : 1.0f);
+        float gain = (i + 1 == melFiltersCount ? 40 : 20);// * ((float)(bank->centerFFTNode - bank->startFFTNode))/((float)bank->fftNodesCount); //((i+1 == _melFiltersCount) ? 1.75f : 1.0f);
         
         for (int j = 0; j < nodesCount; j ++) {
             bank->weights[j] *= gain;
         }
     }
+    
     setup->fftBuffer = (float*)calloc(fftSize * 2, sizeof(float));
     setup->fftSize = fftSize;
     setup->melFilters = melFilters;
