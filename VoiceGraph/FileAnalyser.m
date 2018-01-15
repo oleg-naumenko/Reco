@@ -12,6 +12,8 @@
 #import "on_mag_to_log.h"
 #import "bass_fft_size.h"
 
+#import <Accelerate/Accelerate.h>
+
 
 #define MAX_DURATION 30.0
 
@@ -107,18 +109,40 @@
         
         [_spectrogram setSpectra:_melTransformer->melOutBuffer + 1 length:_melTransformer->melFiltersCount - 1 atTimeIndex:i];
         
-//        printf("%lu: ", (unsigned long)i);
-//
-//        for (int f = 0; f < _melTransformer->melFiltersCount; f++) {
-//            printf("%2.2f, ", _melTransformer->melOutBuffer[f]);
-//        }
-//
-//        printf("\n");
-        
-        
-//        if (read < 2 * fftSize && )
         position += hopInterval;
     }
+    
+//    float filter [9] = {.0f, .0f, 0.3f, .0f, .0f, 0.3f, .0f, .0f, 0.3f};
+//    float filter [9] = {.0f, 0.33f, .0f, .0f, 0.33f, .0f, .0f, 0.33f, .0f};
+//    float filter [9] = {0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f};
+    
+    CFAbsoluteTime tm = CFAbsoluteTimeGetCurrent();
+    
+    NSLog(@"CONV: %2.5f", CFAbsoluteTimeGetCurrent() - tm);
+    
+    float maxSum = FLT_MIN;
+    float minSum = FLT_MAX;
+    for (int i = 0; i < _spectrogram.width; i++) {
+        float sum = 0.0f;
+        float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i];
+        for (int j = 0; j < _spectrogram.height; j++) {
+            sum += (spectra[j] * j);
+        }
+//        sum/= _spectrogram.height;
+        if (i) {
+            float * spectra1 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i-1];
+            sum = sum * 0.3f + spectra1[0] * 0.7f;
+        }
+        if (sum > maxSum) maxSum = sum;
+        if (sum < minSum) minSum = sum;
+        spectra[0] = sum;
+        
+    }
+    for (int i = 0; i < _spectrogram.width; i++) {
+        spectra[0] -= minSum;
+        spectra[0] /= (maxSum - minSum);
+    }
+    
     NSLog(@"Total Hops: %lu", timeHopsNum);
 }
 

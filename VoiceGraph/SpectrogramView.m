@@ -71,6 +71,23 @@
         cellRect.origin.x += stepX;
         cellRect.origin.y = 0.0;
     }
+    
+    NSBezierPath * line = [[NSBezierPath alloc] init];
+    line.lineWidth = 2;
+    NSPoint pt = NSZeroPoint;
+    float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:0];
+    pt.y = spectra[0] * dirtyRect.size.height;
+    [line moveToPoint:pt];
+    for (int t = 1; t < _spectrogram.width; t++) {
+        pt.x += stepX;
+        float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:t];
+        pt.y = spectra[0] * dirtyRect.size.height;
+        [line lineToPoint:pt];
+    }
+    [[NSColor redColor] setStroke];
+    [line stroke];
+    
+    
 }
 
 

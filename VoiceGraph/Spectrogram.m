@@ -10,7 +10,7 @@
 
 @implementation Spectrogram
 {
-    float * _buffer;
+//    float * _buffer;
 }
 
 - (instancetype) initWithWidth:(NSUInteger)width height:(NSUInteger)height

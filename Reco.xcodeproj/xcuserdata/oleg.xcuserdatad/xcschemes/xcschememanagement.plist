@@ -7,7 +7,7 @@
 		<key>Reco-iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Reco.xcscheme</key>
 		<dict>
@@ -28,6 +28,16 @@
 			<true/>
 		</dict>
 		<key>7C1D682A1FA3625300BF8218</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7CC3AEF72008C3D700E22624</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7CC3AF0C2008C3D700E22624</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -81,8 +81,11 @@
 {
     BOOL cool = BASS_RecordInit(-1);
     if (!cool) {
-        NSLog(@"Could not init bass recording: %d", BASS_ErrorGetCode());
-        return;
+        int e = BASS_ErrorGetCode();
+        if (e  != BASS_ERROR_ALREADY) {
+            NSLog(@"Could not init bass recording: %d", e);
+            return;
+        }
     }
     
     NSString * name = [NSUUID UUID].UUIDString;

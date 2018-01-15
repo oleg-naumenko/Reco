@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		7C220F6F200901380056EBDB /* libbassenc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; };
 		7C220F70200901380056EBDB /* libbassenc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; };
 		7C220F71200901510056EBDB /* libbassenc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7C2224C7200913FB004ED169 /* libbassenc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7C638FB31FA378F400964BAA /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C638FB21FA378F000964BAA /* Accelerate.framework */; };
 		7C638FE61FA382F300964BAA /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C638FE41FA382F200964BAA /* GCDTimer.m */; };
 		7C7B8EF91FBB4DD80009AC47 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EF71FBB4DD80009AC47 /* AudioToolbox.framework */; };
@@ -32,46 +33,6 @@
 		7C7B8EFE1FBB4DE50009AC47 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EFD1FBB4DE50009AC47 /* SystemConfiguration.framework */; };
 		7C7B8F001FBB4DEC0009AC47 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EFF1FBB4DEC0009AC47 /* Security.framework */; };
 		7C7B8F021FBB4DF90009AC47 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */; };
-		7C7E31F4200CA1CD0052B126 /* libbassenc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7C7E3215200CACC30052B126 /* RNNPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E31FA200CACC30052B126 /* RNNPattern.m */; };
-		7C7E3216200CACC30052B126 /* RNNPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E31FA200CACC30052B126 /* RNNPattern.m */; };
-		7C7E3217200CACC30052B126 /* RNNPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E31FA200CACC30052B126 /* RNNPattern.m */; };
-		7C7E3218200CACC30052B126 /* RNNSequenceOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E31FB200CACC30052B126 /* RNNSequenceOutput.m */; };
-		7C7E3219200CACC30052B126 /* RNNSequenceOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E31FB200CACC30052B126 /* RNNSequenceOutput.m */; };
-		7C7E321A200CACC30052B126 /* RNNSequenceOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E31FB200CACC30052B126 /* RNNSequenceOutput.m */; };
-		7C7E321B200CACC30052B126 /* RNNTimestep.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E31FF200CACC30052B126 /* RNNTimestep.m */; };
-		7C7E321C200CACC30052B126 /* RNNTimestep.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E31FF200CACC30052B126 /* RNNTimestep.m */; };
-		7C7E321D200CACC30052B126 /* RNNTimestep.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E31FF200CACC30052B126 /* RNNTimestep.m */; };
-		7C7E321E200CACC30052B126 /* RNNOptimization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3200200CACC30052B126 /* RNNOptimization.m */; };
-		7C7E321F200CACC30052B126 /* RNNOptimization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3200200CACC30052B126 /* RNNOptimization.m */; };
-		7C7E3220200CACC30052B126 /* RNNOptimization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3200200CACC30052B126 /* RNNOptimization.m */; };
-		7C7E3221200CACC30052B126 /* RNNCost.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3203200CACC30052B126 /* RNNCost.m */; };
-		7C7E3222200CACC30052B126 /* RNNCost.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3203200CACC30052B126 /* RNNCost.m */; };
-		7C7E3223200CACC30052B126 /* RNNCost.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3203200CACC30052B126 /* RNNCost.m */; };
-		7C7E3224200CACC30052B126 /* RNNActivation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3206200CACC30052B126 /* RNNActivation.m */; };
-		7C7E3225200CACC30052B126 /* RNNActivation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3206200CACC30052B126 /* RNNActivation.m */; };
-		7C7E3226200CACC30052B126 /* RNNActivation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3206200CACC30052B126 /* RNNActivation.m */; };
-		7C7E3227200CACC30052B126 /* RNNFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3209200CACC30052B126 /* RNNFetcher.m */; };
-		7C7E3228200CACC30052B126 /* RNNFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3209200CACC30052B126 /* RNNFetcher.m */; };
-		7C7E3229200CACC30052B126 /* RNNFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3209200CACC30052B126 /* RNNFetcher.m */; };
-		7C7E322A200CACC30052B126 /* RNNMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E320B200CACC30052B126 /* RNNMath.m */; };
-		7C7E322B200CACC30052B126 /* RNNMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E320B200CACC30052B126 /* RNNMath.m */; };
-		7C7E322C200CACC30052B126 /* RNNMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E320B200CACC30052B126 /* RNNMath.m */; };
-		7C7E322D200CACC30052B126 /* RNNPartial.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E320D200CACC30052B126 /* RNNPartial.m */; };
-		7C7E322E200CACC30052B126 /* RNNPartial.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E320D200CACC30052B126 /* RNNPartial.m */; };
-		7C7E322F200CACC30052B126 /* RNNPartial.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E320D200CACC30052B126 /* RNNPartial.m */; };
-		7C7E3230200CACC30052B126 /* RNNNetOutputs.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3211200CACC30052B126 /* RNNNetOutputs.m */; };
-		7C7E3231200CACC30052B126 /* RNNNetOutputs.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3211200CACC30052B126 /* RNNNetOutputs.m */; };
-		7C7E3232200CACC30052B126 /* RNNNetOutputs.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3211200CACC30052B126 /* RNNNetOutputs.m */; };
-		7C7E3233200CACC30052B126 /* RNNNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3213200CACC30052B126 /* RNNNet.m */; };
-		7C7E3234200CACC30052B126 /* RNNNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3213200CACC30052B126 /* RNNNet.m */; };
-		7C7E3235200CACC30052B126 /* RNNNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3213200CACC30052B126 /* RNNNet.m */; };
-		7C7E3236200CACC30052B126 /* RNN.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3214200CACC30052B126 /* RNN.m */; };
-		7C7E3237200CACC30052B126 /* RNN.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3214200CACC30052B126 /* RNN.m */; };
-		7C7E3238200CACC30052B126 /* RNN.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E3214200CACC30052B126 /* RNN.m */; };
-		7C7E323B200CB59A0052B126 /* Matcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E323A200CB59A0052B126 /* Matcher.m */; };
-		7C7E323C200CB59A0052B126 /* Matcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E323A200CB59A0052B126 /* Matcher.m */; };
-		7C7E323D200CB59A0052B126 /* Matcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E323A200CB59A0052B126 /* Matcher.m */; };
 		7C8701092004DB72001E597B /* MelAnalyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8701082004DB72001E597B /* MelAnalyzer.mm */; };
 		7C87010A2004DB7E001E597B /* MelAnalyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8701082004DB72001E597B /* MelAnalyzer.mm */; };
 		7CC3AEED20078FE300E22624 /* on_fft_to_mel.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3AEEC20078FE300E22624 /* on_fft_to_mel.c */; };
@@ -141,7 +102,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				7C7E31F4200CA1CD0052B126 /* libbassenc.dylib in CopyFiles */,
+				7C2224C7200913FB004ED169 /* libbassenc.dylib in CopyFiles */,
 				7C1D684D1FA3660000BF8218 /* libbass.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,32 +159,6 @@
 		7C7B8EFD1FBB4DE50009AC47 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		7C7B8EFF1FBB4DEC0009AC47 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		7C7B8F011FBB4DF90009AC47 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
-		7C7E31F6200CACC30052B126 /* RNN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNN.h; sourceTree = "<group>"; };
-		7C7E31F8200CACC30052B126 /* RNNPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNPattern.h; sourceTree = "<group>"; };
-		7C7E31F9200CACC30052B126 /* RNNSequenceOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNSequenceOutput.h; sourceTree = "<group>"; };
-		7C7E31FA200CACC30052B126 /* RNNPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNPattern.m; sourceTree = "<group>"; };
-		7C7E31FB200CACC30052B126 /* RNNSequenceOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNSequenceOutput.m; sourceTree = "<group>"; };
-		7C7E31FD200CACC30052B126 /* RNNTimestep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNTimestep.h; sourceTree = "<group>"; };
-		7C7E31FE200CACC30052B126 /* RNNOptimization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNOptimization.h; sourceTree = "<group>"; };
-		7C7E31FF200CACC30052B126 /* RNNTimestep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNTimestep.m; sourceTree = "<group>"; };
-		7C7E3200200CACC30052B126 /* RNNOptimization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNOptimization.m; sourceTree = "<group>"; };
-		7C7E3202200CACC30052B126 /* RNNCost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNCost.h; sourceTree = "<group>"; };
-		7C7E3203200CACC30052B126 /* RNNCost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNCost.m; sourceTree = "<group>"; };
-		7C7E3205200CACC30052B126 /* RNNActivation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNActivation.h; sourceTree = "<group>"; };
-		7C7E3206200CACC30052B126 /* RNNActivation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNActivation.m; sourceTree = "<group>"; };
-		7C7E3208200CACC30052B126 /* RNNFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNFetcher.h; sourceTree = "<group>"; };
-		7C7E3209200CACC30052B126 /* RNNFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNFetcher.m; sourceTree = "<group>"; };
-		7C7E320B200CACC30052B126 /* RNNMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNMath.m; sourceTree = "<group>"; };
-		7C7E320C200CACC30052B126 /* RNNPartial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNPartial.h; sourceTree = "<group>"; };
-		7C7E320D200CACC30052B126 /* RNNPartial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNPartial.m; sourceTree = "<group>"; };
-		7C7E320E200CACC30052B126 /* RNNMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNMath.h; sourceTree = "<group>"; };
-		7C7E3210200CACC30052B126 /* RNNNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNNet.h; sourceTree = "<group>"; };
-		7C7E3211200CACC30052B126 /* RNNNetOutputs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNNetOutputs.m; sourceTree = "<group>"; };
-		7C7E3212200CACC30052B126 /* RNNNetOutputs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNNetOutputs.h; sourceTree = "<group>"; };
-		7C7E3213200CACC30052B126 /* RNNNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNNet.m; sourceTree = "<group>"; };
-		7C7E3214200CACC30052B126 /* RNN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNN.m; sourceTree = "<group>"; };
-		7C7E3239200CB59A0052B126 /* Matcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matcher.h; sourceTree = "<group>"; };
-		7C7E323A200CB59A0052B126 /* Matcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Matcher.m; sourceTree = "<group>"; };
 		7C8701072004DB72001E597B /* MelAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MelAnalyzer.h; sourceTree = "<group>"; };
 		7C8701082004DB72001E597B /* MelAnalyzer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MelAnalyzer.mm; sourceTree = "<group>"; };
 		7CC3AEEB20078FE300E22624 /* on_fft_to_mel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = on_fft_to_mel.h; sourceTree = "<group>"; };
@@ -278,8 +213,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C1D684B1FA365DC00BF8218 /* libbass.dylib in Frameworks */,
-				7C220F6F200901380056EBDB /* libbassenc.dylib in Frameworks */,
 				7C638FB31FA378F400964BAA /* Accelerate.framework in Frameworks */,
+				7C220F6F200901380056EBDB /* libbassenc.dylib in Frameworks */,
 				7C1D68531FA36C2500BF8218 /* AppKit.framework in Frameworks */,
 				7C1D68551FA36C2C00BF8218 /* OpenGL.framework in Frameworks */,
 				4520614DD71B700899285920 /* Pods_Reco.framework in Frameworks */,
@@ -340,7 +275,6 @@
 				7C1D682E1FA3625300BF8218 /* RecoTests */,
 				7CC3AEF92008C3D700E22624 /* VoiceGraph */,
 				7CC3AF102008C3D800E22624 /* VoiceGraphTests */,
-				7C7E31F5200CACC30052B126 /* RNN */,
 				7C1D68191FA3625300BF8218 /* Products */,
 				7C1D68511FA36C1100BF8218 /* Frameworks */,
 				91724CE8935A792256DA658B /* Pods */,
@@ -411,93 +345,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7C7E31F5200CACC30052B126 /* RNN */ = {
-			isa = PBXGroup;
-			children = (
-				7C7E31F6200CACC30052B126 /* RNN.h */,
-				7C7E3214200CACC30052B126 /* RNN.m */,
-				7C7E31F7200CACC30052B126 /* Patterns */,
-				7C7E31FC200CACC30052B126 /* Optimization */,
-				7C7E3201200CACC30052B126 /* Cost */,
-				7C7E3204200CACC30052B126 /* Activation */,
-				7C7E3207200CACC30052B126 /* Fetcher */,
-				7C7E320A200CACC30052B126 /* Math */,
-				7C7E320F200CACC30052B126 /* Nets */,
-			);
-			path = RNN;
-			sourceTree = "<group>";
-		};
-		7C7E31F7200CACC30052B126 /* Patterns */ = {
-			isa = PBXGroup;
-			children = (
-				7C7E31F8200CACC30052B126 /* RNNPattern.h */,
-				7C7E31F9200CACC30052B126 /* RNNSequenceOutput.h */,
-				7C7E31FA200CACC30052B126 /* RNNPattern.m */,
-				7C7E31FB200CACC30052B126 /* RNNSequenceOutput.m */,
-			);
-			path = Patterns;
-			sourceTree = "<group>";
-		};
-		7C7E31FC200CACC30052B126 /* Optimization */ = {
-			isa = PBXGroup;
-			children = (
-				7C7E31FD200CACC30052B126 /* RNNTimestep.h */,
-				7C7E31FE200CACC30052B126 /* RNNOptimization.h */,
-				7C7E31FF200CACC30052B126 /* RNNTimestep.m */,
-				7C7E3200200CACC30052B126 /* RNNOptimization.m */,
-			);
-			path = Optimization;
-			sourceTree = "<group>";
-		};
-		7C7E3201200CACC30052B126 /* Cost */ = {
-			isa = PBXGroup;
-			children = (
-				7C7E3202200CACC30052B126 /* RNNCost.h */,
-				7C7E3203200CACC30052B126 /* RNNCost.m */,
-			);
-			path = Cost;
-			sourceTree = "<group>";
-		};
-		7C7E3204200CACC30052B126 /* Activation */ = {
-			isa = PBXGroup;
-			children = (
-				7C7E3205200CACC30052B126 /* RNNActivation.h */,
-				7C7E3206200CACC30052B126 /* RNNActivation.m */,
-			);
-			path = Activation;
-			sourceTree = "<group>";
-		};
-		7C7E3207200CACC30052B126 /* Fetcher */ = {
-			isa = PBXGroup;
-			children = (
-				7C7E3208200CACC30052B126 /* RNNFetcher.h */,
-				7C7E3209200CACC30052B126 /* RNNFetcher.m */,
-			);
-			path = Fetcher;
-			sourceTree = "<group>";
-		};
-		7C7E320A200CACC30052B126 /* Math */ = {
-			isa = PBXGroup;
-			children = (
-				7C7E320B200CACC30052B126 /* RNNMath.m */,
-				7C7E320C200CACC30052B126 /* RNNPartial.h */,
-				7C7E320D200CACC30052B126 /* RNNPartial.m */,
-				7C7E320E200CACC30052B126 /* RNNMath.h */,
-			);
-			path = Math;
-			sourceTree = "<group>";
-		};
-		7C7E320F200CACC30052B126 /* Nets */ = {
-			isa = PBXGroup;
-			children = (
-				7C7E3210200CACC30052B126 /* RNNNet.h */,
-				7C7E3211200CACC30052B126 /* RNNNetOutputs.m */,
-				7C7E3212200CACC30052B126 /* RNNNetOutputs.h */,
-				7C7E3213200CACC30052B126 /* RNNNet.m */,
-			);
-			path = Nets;
-			sourceTree = "<group>";
-		};
 		7CC3AEF32008B73100E22624 /* OnDSP */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,8 +380,6 @@
 				7CC3AF082008C3D700E22624 /* VoiceGraph.entitlements */,
 				7C220F6A2008FD070056EBDB /* RecorderViewController.h */,
 				7C220F6B2008FD070056EBDB /* RecorderViewController.m */,
-				7C7E3239200CB59A0052B126 /* Matcher.h */,
-				7C7E323A200CB59A0052B126 /* Matcher.m */,
 			);
 			path = VoiceGraph;
 			sourceTree = "<group>";
@@ -709,6 +554,7 @@
 					};
 					7CC3AEF72008C3D700E22624 = {
 						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = ZA6S8VA4XW;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -718,17 +564,19 @@
 					};
 					7CC3AF0C2008C3D700E22624 = {
 						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = ZA6S8VA4XW;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 7CC3AEF72008C3D700E22624;
 					};
 					7CEC07B71FBB49A600D5DAD1 = {
 						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = ZA6S8VA4XW;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 7C1D68131FA3625300BF8218 /* Build configuration list for PBXProject "Reco" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -906,25 +754,12 @@
 			files = (
 				7C1D68481FA363DF00BF8218 /* MyViewController.mm in Sources */,
 				7C1D68251FA3625300BF8218 /* main.m in Sources */,
-				7C7E322D200CACC30052B126 /* RNNPartial.m in Sources */,
-				7C7E3236200CACC30052B126 /* RNN.m in Sources */,
-				7C7E3218200CACC30052B126 /* RNNSequenceOutput.m in Sources */,
-				7C7E321E200CACC30052B126 /* RNNOptimization.m in Sources */,
-				7C7E3224200CACC30052B126 /* RNNActivation.m in Sources */,
 				7CC3AF342008E3D700E22624 /* SpectrogramView.m in Sources */,
 				7CC3AF2F2008D7DF00E22624 /* bass_fft_size.c in Sources */,
-				7C7E321B200CACC30052B126 /* RNNTimestep.m in Sources */,
 				7C1D681D1FA3625300BF8218 /* AppDelegate.m in Sources */,
-				7C7E3230200CACC30052B126 /* RNNNetOutputs.m in Sources */,
 				7CC3AEED20078FE300E22624 /* on_fft_to_mel.c in Sources */,
 				7C1D68501FA3661600BF8218 /* Recorder.mm in Sources */,
-				7C7E3215200CACC30052B126 /* RNNPattern.m in Sources */,
-				7C7E3221200CACC30052B126 /* RNNCost.m in Sources */,
-				7C7E323B200CB59A0052B126 /* Matcher.m in Sources */,
 				7C638FE61FA382F300964BAA /* GCDTimer.m in Sources */,
-				7C7E3233200CACC30052B126 /* RNNNet.m in Sources */,
-				7C7E3227200CACC30052B126 /* RNNFetcher.m in Sources */,
-				7C7E322A200CACC30052B126 /* RNNMath.m in Sources */,
 				7CC3AEF12007B60200E22624 /* on_mag_to_log.c in Sources */,
 				7C8701092004DB72001E597B /* MelAnalyzer.mm in Sources */,
 				7CEC07D11FBB4A7200D5DAD1 /* Analyzer.mm in Sources */,
@@ -948,25 +783,12 @@
 			files = (
 				7CC3AF1E2008C9E100E22624 /* FileAnalyser.m in Sources */,
 				7CC3AEFF2008C3D700E22624 /* ViewController.m in Sources */,
-				7C7E322F200CACC30052B126 /* RNNPartial.m in Sources */,
-				7C7E3238200CACC30052B126 /* RNN.m in Sources */,
-				7C7E321A200CACC30052B126 /* RNNSequenceOutput.m in Sources */,
-				7C7E3220200CACC30052B126 /* RNNOptimization.m in Sources */,
-				7C7E3226200CACC30052B126 /* RNNActivation.m in Sources */,
 				7CC3AF362008E3D700E22624 /* SpectrogramView.m in Sources */,
 				7CC3AF312008D7DF00E22624 /* bass_fft_size.c in Sources */,
-				7C7E321D200CACC30052B126 /* RNNTimestep.m in Sources */,
 				7CC3AF072008C3D700E22624 /* main.m in Sources */,
-				7C7E3232200CACC30052B126 /* RNNNetOutputs.m in Sources */,
 				7CC3AF212008CAE100E22624 /* Spectrogram.m in Sources */,
 				7C220F6C2008FD070056EBDB /* RecorderViewController.m in Sources */,
-				7C7E3217200CACC30052B126 /* RNNPattern.m in Sources */,
-				7C7E3223200CACC30052B126 /* RNNCost.m in Sources */,
-				7C7E323D200CB59A0052B126 /* Matcher.m in Sources */,
 				7C220F692008F9940056EBDB /* SpectrogramViewController.m in Sources */,
-				7C7E3235200CACC30052B126 /* RNNNet.m in Sources */,
-				7C7E3229200CACC30052B126 /* RNNFetcher.m in Sources */,
-				7C7E322C200CACC30052B126 /* RNNMath.m in Sources */,
 				7CC3AEFC2008C3D700E22624 /* AppDelegate.m in Sources */,
 				7CC3AF1B2008C3FF00E22624 /* on_mag_to_log.c in Sources */,
 				7CC3AF1A2008C3FF00E22624 /* on_fft_to_mel.c in Sources */,
@@ -987,25 +809,12 @@
 			files = (
 				7CEC07D61FBB4AAF00D5DAD1 /* GCDTimer.m in Sources */,
 				7CEC07BF1FBB49A600D5DAD1 /* ViewController.mm in Sources */,
-				7C7E322E200CACC30052B126 /* RNNPartial.m in Sources */,
-				7C7E3237200CACC30052B126 /* RNN.m in Sources */,
-				7C7E3219200CACC30052B126 /* RNNSequenceOutput.m in Sources */,
-				7C7E321F200CACC30052B126 /* RNNOptimization.m in Sources */,
-				7C7E3225200CACC30052B126 /* RNNActivation.m in Sources */,
 				7CC3AF352008E3D700E22624 /* SpectrogramView.m in Sources */,
 				7CC3AF302008D7DF00E22624 /* bass_fft_size.c in Sources */,
-				7C7E321C200CACC30052B126 /* RNNTimestep.m in Sources */,
 				7CEC07CA1FBB49A600D5DAD1 /* main.m in Sources */,
-				7C7E3231200CACC30052B126 /* RNNNetOutputs.m in Sources */,
 				7CC3AEEE20079AC400E22624 /* on_fft_to_mel.c in Sources */,
 				7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */,
-				7C7E3216200CACC30052B126 /* RNNPattern.m in Sources */,
-				7C7E3222200CACC30052B126 /* RNNCost.m in Sources */,
-				7C7E323C200CB59A0052B126 /* Matcher.m in Sources */,
 				7CEC07D41FBB4A9B00D5DAD1 /* Recorder.mm in Sources */,
-				7C7E3234200CACC30052B126 /* RNNNet.m in Sources */,
-				7C7E3228200CACC30052B126 /* RNNFetcher.m in Sources */,
-				7C7E322B200CACC30052B126 /* RNNMath.m in Sources */,
 				7CC3AEF22007B60200E22624 /* on_mag_to_log.c in Sources */,
 				7C87010A2004DB7E001E597B /* MelAnalyzer.mm in Sources */,
 				7CEC07D31FBB4A7200D5DAD1 /* Analyzer.mm in Sources */,
@@ -1250,6 +1059,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/bass24-osx",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naumenko.VoiceGraph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1269,6 +1079,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/bass24-osx",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naumenko.VoiceGraph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

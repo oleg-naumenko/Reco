@@ -14,7 +14,9 @@
 - (void) setSpectra:(float*)values length:(NSUInteger) length atTimeIndex:(NSUInteger)timeIdx;
 - (float*) getSpectra:(float*)valuePtr ofLength:(NSUInteger)length atTimeIndex:(NSUInteger)timeIdx;
 
-@property (nonatomic) NSUInteger width;
-@property (nonatomic) NSUInteger height;
+@property (nonatomic, readonly) NSUInteger width;
+@property (nonatomic, readonly) NSUInteger height;
+
+@property (nonatomic, readonly) float * buffer;
 
 @end
