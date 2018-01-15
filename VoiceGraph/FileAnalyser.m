@@ -51,6 +51,7 @@
 
 - (void) openFileFromPath:(NSString*)path completion:(AnalyserCallback)fileOpenedCallback
 {
+    _filePath = path;
     _bassChannel = [self bassChannelFromFile:path];
     if (!_bassChannel) {
         NSError * error = [NSError errorWithDomain:@"naumenko.com" code:100 userInfo:@{NSLocalizedDescriptionKey:@"Could not load audio file", NSURLErrorKey:[NSURL fileURLWithPath:path]}];
@@ -118,7 +119,6 @@
     
     CFAbsoluteTime tm = CFAbsoluteTimeGetCurrent();
     
-    NSLog(@"CONV: %2.5f", CFAbsoluteTimeGetCurrent() - tm);
     
     float maxSum = FLT_MIN;
     float minSum = FLT_MAX;
@@ -126,24 +126,79 @@
         float sum = 0.0f;
         float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i];
         for (int j = 0; j < _spectrogram.height; j++) {
-            sum += (spectra[j] * j);
+            sum += (spectra[j]);
         }
 //        sum/= _spectrogram.height;
         if (i) {
             float * spectra1 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i-1];
-            sum = sum * 0.3f + spectra1[0] * 0.7f;
+//            sum = sum * 0.1f + spectra1[0] * 0.9f;
         }
         if (sum > maxSum) maxSum = sum;
         if (sum < minSum) minSum = sum;
         spectra[0] = sum;
         
     }
+    
+//    float filter [5] = {0.0f, 0.05f, 0.9f, 0.05f, 0.0f};
+    float filter [5] = {0.33f, 0.33f, 0.33f};//, 0.2f, 0.2f};
+    
+//    vDSP_conv(_spectrogram.buffer, _spectrogram.height, filter, 1, _spectrogram.buffer, _spectrogram.height, _spectrogram.width, 3);
+//    for (int i = 0; i < _spectrogram.width; i++) {
+//        float sum = 0.0f;
+//        float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i];
+//    }
+    
+    
+    
     for (int i = 0; i < _spectrogram.width; i++) {
+        float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i];
         spectra[0] -= minSum;
         spectra[0] /= (maxSum - minSum);
     }
     
     NSLog(@"Total Hops: %lu", timeHopsNum);
+    
+    NSMutableArray * maxima = @[].mutableCopy;
+    NSMutableArray * minima = @[].mutableCopy;
+    
+    BOOL wasMaxima = NO;
+    BOOL wasStart = NO;
+    int maxCount = 0;
+    for (int i = 2; i < _spectrogram.width - 2; i++) {
+        
+        float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i];
+        float * spectraMinus1 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i-1];
+        float * spectraMinus2 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i-2];
+        float * spectraPlus1 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i+1];
+        float * spectraPlus2 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i+2];
+        
+        BOOL isOnset = (!wasStart
+                        && *spectra > *spectraMinus1
+                        && *spectra < *spectraPlus1
+                        && *spectraPlus1 - *spectraMinus1 > 0.05f);
+        if (isOnset) {
+            _spectrogram.startIndex = i - 1;
+            wasStart = YES;
+        }
+        
+        BOOL isLocalMax = ( *spectra > *spectraMinus1 && *spectra > *spectraPlus1 && *spectra > *spectraMinus2 && *spectra > *spectraPlus2 && *spectra > 0.3);
+        
+        if (isLocalMax && !wasMaxima && wasStart) {
+            wasMaxima = YES;
+            [maxima addObject:@(i)];
+            maxCount ++;
+        } else {
+            BOOL isLocalMin = (*spectra < *spectraMinus1 && *spectra < *spectraPlus1 && *spectra < *spectraMinus2 && *spectra < *spectraPlus2);
+            if (isLocalMin && wasMaxima && wasStart) {
+                wasMaxima = NO;
+                [minima addObject:@(i)];
+            }
+        }
+    }
+    _spectrogram.maximas = maxima.copy;
+    _spectrogram.minimas = minima.copy;
+    
+    NSLog(@"CONV: %2.5f", CFAbsoluteTimeGetCurrent() - tm);
 }
 
 

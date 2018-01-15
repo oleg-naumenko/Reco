@@ -19,4 +19,7 @@ typedef void(^AnalyserCallback)(id result, NSError * error);
 @property (nonatomic, readonly) UInt64 streamByteLength;
 @property (nonatomic, readonly) UInt64 sampleRate;
 @property (nonatomic, readonly) NSTimeInterval duration;
+
+@property (nonatomic, readonly) NSString * filePath;
+
 @end

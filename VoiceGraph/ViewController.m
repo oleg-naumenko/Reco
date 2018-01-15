@@ -10,12 +10,14 @@
 #import "FileAnalyser.h"
 #import "SpectrogramView.h"
 #import "RecorderViewController.h"
+#import "Player.h"
 
 @implementation ViewController
 {
     FileAnalyser * _fileAnalyser;
     IBOutlet SpectrogramView * _spectrogramView;
     IBOutlet NSTextField * _spectrogramLabel;
+    Player * _player;
 }
 
 - (void)viewDidLoad {
@@ -46,6 +48,22 @@
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 
+}
+
+- (IBAction)onPlayButton:(NSButton*)sender
+{
+    NSString * file = _fileAnalyser.filePath;
+    _player = [[Player alloc] initWithFilePath:file];
+    _player.stateCallback = ^(Player *player) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (player.isPlaying) {
+                sender.enabled = NO;
+            } else {
+                sender.enabled = YES;
+            }
+        });
+    };
+    [_player play];
 }
 
 - (IBAction)onOpenButton:(NSButton*)sender

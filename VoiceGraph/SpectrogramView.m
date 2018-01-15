@@ -87,6 +87,67 @@
     [[NSColor redColor] setStroke];
     [line stroke];
     
+    if (_spectrogram.maximas.count) {
+        NSBezierPath * maxLines = [[NSBezierPath alloc] init];
+        for (NSNumber * indexNum in _spectrogram.maximas) {
+            
+            CGFloat x = indexNum.integerValue * stepX;
+            
+            NSPoint btm = NSMakePoint(x, 0);
+            NSPoint top = NSMakePoint(x, dirtyRect.size.height);
+            [maxLines moveToPoint:btm];
+            [maxLines lineToPoint:top];
+        }
+        maxLines.lineWidth = 2;
+        [[NSColor yellowColor] setStroke];
+        [maxLines stroke];
+    }
+    
+    if (_spectrogram.minimas.count) {
+        NSBezierPath * minLines = [[NSBezierPath alloc] init];
+        for (NSNumber * indexNum in _spectrogram.minimas) {
+            
+            CGFloat x = indexNum.integerValue * stepX;
+            
+            NSPoint btm = NSMakePoint(x, 0);
+            NSPoint top = NSMakePoint(x, dirtyRect.size.height);
+            [minLines moveToPoint:btm];
+            [minLines lineToPoint:top];
+        }
+        minLines.lineWidth = 1;
+        [[NSColor orangeColor] setStroke];
+        [minLines stroke];
+    }
+    
+    if (_spectrogram.startIndex) {
+        CGFloat x = _spectrogram.startIndex * stepX;
+        
+        NSBezierPath * startLine = [[NSBezierPath alloc] init];
+        
+        NSPoint btm = NSMakePoint(x, 0);
+        NSPoint top = NSMakePoint(x, dirtyRect.size.height);
+        [startLine moveToPoint:btm];
+        [startLine lineToPoint:top];
+        
+        startLine.lineWidth = 2;
+        [[NSColor blueColor] setStroke];
+        [startLine stroke];
+    }
+    
+    if (_spectrogram.endIndex) {
+        CGFloat x = _spectrogram.endIndex * stepX;
+        
+        NSBezierPath * startLine = [[NSBezierPath alloc] init];
+        
+        NSPoint btm = NSMakePoint(x, 0);
+        NSPoint top = NSMakePoint(x, dirtyRect.size.height);
+        [startLine moveToPoint:btm];
+        [startLine lineToPoint:top];
+        
+        startLine.lineWidth = 2;
+        [[NSColor greenColor] setStroke];
+        [startLine stroke];
+    }
     
 }
 

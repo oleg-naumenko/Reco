@@ -27,6 +27,9 @@
 		7C2224C7200913FB004ED169 /* libbassenc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C220F6E200901380056EBDB /* libbassenc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7C638FB31FA378F400964BAA /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C638FB21FA378F000964BAA /* Accelerate.framework */; };
 		7C638FE61FA382F300964BAA /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C638FE41FA382F200964BAA /* GCDTimer.m */; };
+		7C6474FD200D1958006460C7 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6474FC200D1958006460C7 /* Player.m */; };
+		7C6474FE200D1958006460C7 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6474FC200D1958006460C7 /* Player.m */; };
+		7C6474FF200D1958006460C7 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6474FC200D1958006460C7 /* Player.m */; };
 		7C7B8EF91FBB4DD80009AC47 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EF71FBB4DD80009AC47 /* AudioToolbox.framework */; };
 		7C7B8EFA1FBB4DD80009AC47 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EF81FBB4DD80009AC47 /* CoreAudio.framework */; };
 		7C7B8EFC1FBB4DDF0009AC47 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B8EFB1FBB4DDF0009AC47 /* AVFoundation.framework */; };
@@ -153,6 +156,8 @@
 		7C638FB21FA378F000964BAA /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7C638FE41FA382F200964BAA /* GCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDTimer.m; path = Common/GCDTimer.m; sourceTree = SOURCE_ROOT; };
 		7C638FE51FA382F300964BAA /* GCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDTimer.h; path = Common/GCDTimer.h; sourceTree = SOURCE_ROOT; };
+		7C6474FB200D1958006460C7 /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		7C6474FC200D1958006460C7 /* Player.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		7C7B8EF71FBB4DD80009AC47 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		7C7B8EF81FBB4DD80009AC47 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
 		7C7B8EFB1FBB4DDF0009AC47 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -421,6 +426,8 @@
 				7C1D684F1FA3661600BF8218 /* Recorder.mm */,
 				7C638FE51FA382F300964BAA /* GCDTimer.h */,
 				7C638FE41FA382F200964BAA /* GCDTimer.m */,
+				7C6474FB200D1958006460C7 /* Player.h */,
+				7C6474FC200D1958006460C7 /* Player.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -756,6 +763,7 @@
 				7C1D68251FA3625300BF8218 /* main.m in Sources */,
 				7CC3AF342008E3D700E22624 /* SpectrogramView.m in Sources */,
 				7CC3AF2F2008D7DF00E22624 /* bass_fft_size.c in Sources */,
+				7C6474FD200D1958006460C7 /* Player.m in Sources */,
 				7C1D681D1FA3625300BF8218 /* AppDelegate.m in Sources */,
 				7CC3AEED20078FE300E22624 /* on_fft_to_mel.c in Sources */,
 				7C1D68501FA3661600BF8218 /* Recorder.mm in Sources */,
@@ -785,6 +793,7 @@
 				7CC3AEFF2008C3D700E22624 /* ViewController.m in Sources */,
 				7CC3AF362008E3D700E22624 /* SpectrogramView.m in Sources */,
 				7CC3AF312008D7DF00E22624 /* bass_fft_size.c in Sources */,
+				7C6474FF200D1958006460C7 /* Player.m in Sources */,
 				7CC3AF072008C3D700E22624 /* main.m in Sources */,
 				7CC3AF212008CAE100E22624 /* Spectrogram.m in Sources */,
 				7C220F6C2008FD070056EBDB /* RecorderViewController.m in Sources */,
@@ -811,6 +820,7 @@
 				7CEC07BF1FBB49A600D5DAD1 /* ViewController.mm in Sources */,
 				7CC3AF352008E3D700E22624 /* SpectrogramView.m in Sources */,
 				7CC3AF302008D7DF00E22624 /* bass_fft_size.c in Sources */,
+				7C6474FE200D1958006460C7 /* Player.m in Sources */,
 				7CEC07CA1FBB49A600D5DAD1 /* main.m in Sources */,
 				7CC3AEEE20079AC400E22624 /* on_fft_to_mel.c in Sources */,
 				7CEC07BC1FBB49A600D5DAD1 /* AppDelegate.m in Sources */,

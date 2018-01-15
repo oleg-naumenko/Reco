@@ -19,4 +19,10 @@
 
 @property (nonatomic, readonly) float * buffer;
 
+@property (nonatomic, assign) NSUInteger startIndex;
+@property (nonatomic, assign) NSUInteger endIndex;
+
+@property (nonatomic, strong) NSArray <NSNumber*> * maximas;
+@property (nonatomic, strong) NSArray <NSNumber*> * minimas;
+
 @end
