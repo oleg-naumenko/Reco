@@ -66,7 +66,7 @@
 
 - (void) startAnalyzeStream
 {
-    DWORD fftSize = 512;//is't actually an fft halph size, called here like this for convenience
+    DWORD fftSize = 512;//is't actually an fft halph size, named here like this for convenience
     
     float hopInterval = 0.04;
     float hopHalfSpanFFT = BASS_ChannelBytes2Seconds(_bassChannel, fftSize * sizeof(float));
@@ -86,7 +86,7 @@
     
     QWORD positionBytes = 0;
     float position = 0.0f;
-    float oldPos;
+    float oldPos = 0.0f;
     for(NSUInteger i = 0; i < timeHopsNum; i++) {
         
         positionBytes = BASS_ChannelSeconds2Bytes(_bassChannel, position);
@@ -119,9 +119,11 @@
     
     CFAbsoluteTime tm = CFAbsoluteTimeGetCurrent();
     
+    float averagedForwadSum[_spectrogram.width];
+    float averagedBackwardSum[_spectrogram.width];
     
-    float maxSum = FLT_MIN;
-    float minSum = FLT_MAX;
+    
+    //populate averaged forward/backward:
     for (int i = 0; i < _spectrogram.width; i++) {
         float sum = 0.0f;
         float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i];
@@ -129,31 +131,81 @@
             sum += (spectra[j]);
         }
 //        sum/= _spectrogram.height;
+//        if (i) {
+//            float * spectra1 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i-1];
+//            sum = sum * 0.01f + averagedForwadSum[i] * 0.99f;
+//        }
+//        if (sum > maxSum) maxSum = sum;
+//        if (sum < minSum) minSum = sum;
+        
+        averagedForwadSum[i] = sum;
+        averagedBackwardSum[i] = sum;
+    }
+    
+    float maxSum = FLT_MIN;
+    float minSum = FLT_MAX;
+    
+    //average forward:
+    for (int i = 1; i < _spectrogram.width; i++) {
+        float sum = averagedForwadSum[i];
         if (i) {
-            float * spectra1 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i-1];
-//            sum = sum * 0.1f + spectra1[0] * 0.9f;
+            sum = sum * 0.05f + averagedForwadSum[i-1] * 0.95f;
         }
         if (sum > maxSum) maxSum = sum;
         if (sum < minSum) minSum = sum;
-        spectra[0] = sum;
-        
+        averagedForwadSum[i] = sum;
     }
     
-//    float filter [5] = {0.0f, 0.05f, 0.9f, 0.05f, 0.0f};
-    float filter [5] = {0.33f, 0.33f, 0.33f};//, 0.2f, 0.2f};
+    //scale fwd averaged sums:
     
-//    vDSP_conv(_spectrogram.buffer, _spectrogram.height, filter, 1, _spectrogram.buffer, _spectrogram.height, _spectrogram.width, 3);
+    for (int i = 0; i < _spectrogram.width; i++) {
+        averagedForwadSum[i] -= minSum;
+        averagedForwadSum[i] /= (maxSum - minSum);
+    }
+    
+    maxSum = FLT_MIN;
+    minSum = FLT_MAX;
+    
+    //average backward:
+    for (int i = (int)_spectrogram.width - 2; i >= 0; i--) {
+        float sum = averagedBackwardSum[i];
+        
+        if (i) {
+            sum = sum * 0.1f + averagedBackwardSum[i+1] * 0.9f;
+        }
+        if (sum > maxSum) maxSum = sum;
+        if (sum < minSum) minSum = sum;
+        averagedBackwardSum[i] = sum;
+    }
+    
+    //scale bwd averaged sums:
+    
+    for (int i = 0; i < _spectrogram.width; i++) {
+
+        averagedBackwardSum[i] -= minSum;
+        averagedBackwardSum[i] /= (maxSum - minSum);
+    }
+    
+    
+//    float filter [5] = {0.0f, 0.05f, 0.9f, 0.05f, 0.0f};
+//    float filter [5] = {0.33f, 0.33f, 0.33f};//, 0.2f, 0.2f};
+//    float filter [9] = {0.11f, 0.11f, 0.11f, 0.11f, 0.12f, 0.11f, 0.11f, 0.11f, 0.11f};//, 0.2f, 0.2f};
+    
+//    vDSP_conv(_spectrogram.buffer, _spectrogram.height, filter, 1, _spectrogram.buffer, _spectrogram.height, _spectrogram.width, 9);
 //    for (int i = 0; i < _spectrogram.width; i++) {
 //        float sum = 0.0f;
 //        float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i];
 //    }
     
     
-    
+    //put data into plot:
     for (int i = 0; i < _spectrogram.width; i++) {
         float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i];
-        spectra[0] -= minSum;
-        spectra[0] /= (maxSum - minSum);
+        
+//        spectra[0] = (i < _spectrogram.width/2 ? averagedForwadSum[i] : averagedBackwardSum[i]);
+        spectra[0] = averagedForwadSum[i];
+//        spectra[0] = averagedBackwardSum[i];
+        
     }
     
     NSLog(@"Total Hops: %lu", timeHopsNum);
@@ -161,39 +213,63 @@
     NSMutableArray * maxima = @[].mutableCopy;
     NSMutableArray * minima = @[].mutableCopy;
     
-    BOOL wasMaxima = NO;
-    BOOL wasStart = NO;
-    int maxCount = 0;
-    for (int i = 2; i < _spectrogram.width - 2; i++) {
+    
+    //find first onset for "start" marker:
+    
+    for (int i = 0; i < _spectrogram.width - 2; i++) {
         
-        float * spectra = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i];
-        float * spectraMinus1 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i-1];
-        float * spectraMinus2 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i-2];
-        float * spectraPlus1 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i+1];
-        float * spectraPlus2 = [_spectrogram getSpectra:NULL ofLength:_spectrogram.height atTimeIndex:i+2];
+        float curValue = averagedForwadSum[i];
+        int riseSize = 5;
+        BOOL isRise = YES;
+        BOOL isAccel = NO;
+        float delta = 0.0f;
         
-        BOOL isOnset = (!wasStart
-                        && *spectra > *spectraMinus1
-                        && *spectra < *spectraPlus1
-                        && *spectraPlus1 - *spectraMinus1 > 0.05f);
-        if (isOnset) {
-            _spectrogram.startIndex = i - 1;
-            wasStart = YES;
-        }
-        
-        BOOL isLocalMax = ( *spectra > *spectraMinus1 && *spectra > *spectraPlus1 && *spectra > *spectraMinus2 && *spectra > *spectraPlus2 && *spectra > 0.3);
-        
-        if (isLocalMax && !wasMaxima && wasStart) {
-            wasMaxima = YES;
-            [maxima addObject:@(i)];
-            maxCount ++;
-        } else {
-            BOOL isLocalMin = (*spectra < *spectraMinus1 && *spectra < *spectraPlus1 && *spectra < *spectraMinus2 && *spectra < *spectraPlus2);
-            if (isLocalMin && wasMaxima && wasStart) {
-                wasMaxima = NO;
-                [minima addObject:@(i)];
+        for (int j = 1; j < riseSize; j++) {
+            int index = i + j;
+            if (index > _spectrogram.width -1) break;
+            float nextValue = averagedForwadSum[index];
+            isRise = isRise && (nextValue > curValue);
+            if (!isRise) {
+                break;
+            } else {
+                float newDelta = nextValue - curValue;
+                isAccel = (isAccel || newDelta > delta);
+                curValue = nextValue;
             }
         }
+        if (isRise && isAccel && curValue < 0.6f && curValue > 0.1f) {
+            _spectrogram.startIndex = i;
+            break;
+        }
+    }
+    
+    //find last dropoff for "end" marker:
+    
+    for (int i = (int)_spectrogram.width - 1; i > 2; i--) {
+        
+        float curValue = averagedBackwardSum[i];
+        
+        int riseSize = 5;
+        BOOL isRise = YES;
+        for (int j = 1; j < riseSize; j++) {
+            int index = i - j;
+            if (index < 0) break;
+            float nextValue = averagedBackwardSum[index];
+            isRise = isRise && (nextValue > curValue);
+            if (!isRise) {
+                break;
+            } else {
+//                NSLog(@"ISRISE: %2.2f %2.2f - %d", nextValue, curValue, i);
+                curValue = nextValue;
+            }
+        }
+        if (isRise && i > _spectrogram.startIndex && curValue < 0.6f && curValue > 0.05) {
+            _spectrogram.endIndex = i;
+            break;
+        }
+    }
+    if(!_spectrogram.endIndex) {
+        _spectrogram.endIndex = _spectrogram.width - 1;
     }
     _spectrogram.maximas = maxima.copy;
     _spectrogram.minimas = minima.copy;
@@ -202,6 +278,20 @@
 }
 
 
+
+//        BOOL isLocalMax = ( *spectra > *spectraMinus1 && *spectra > *spectraPlus1 && *spectra > *spectraMinus2 && *spectra > *spectraPlus2 && *spectra > 0.3);
+//
+//        if (isLocalMax && !wasMaxima && wasStart) {
+//            wasMaxima = YES;
+//            [maxima addObject:@(i)];
+//            maxCount ++;
+//        } else {
+//            BOOL isLocalMin = (*spectra < *spectraMinus1 && *spectra < *spectraPlus1 && *spectra < *spectraMinus2 && *spectra < *spectraPlus2);
+//            if (isLocalMin && wasMaxima && wasStart) {
+//                wasMaxima = NO;
+//                [minima addObject:@(i)];
+//            }
+//        }
 
 - (DWORD)bassChannelFromFile:(NSString*)filePath
 {

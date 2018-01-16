@@ -119,13 +119,14 @@
         [minLines stroke];
     }
     
-    if (_spectrogram.startIndex) {
+//    if (_spectrogram.startIndex)
+    {
         CGFloat x = _spectrogram.startIndex * stepX;
         
         NSBezierPath * startLine = [[NSBezierPath alloc] init];
         
-        NSPoint btm = NSMakePoint(x, 0);
-        NSPoint top = NSMakePoint(x, dirtyRect.size.height);
+        NSPoint btm = NSMakePoint(x + 1, 0);
+        NSPoint top = NSMakePoint(x + 1, dirtyRect.size.height);
         [startLine moveToPoint:btm];
         [startLine lineToPoint:top];
         
@@ -134,7 +135,8 @@
         [startLine stroke];
     }
     
-    if (_spectrogram.endIndex) {
+//    if (_spectrogram.endIndex)
+    {
         CGFloat x = _spectrogram.endIndex * stepX;
         
         NSBezierPath * startLine = [[NSBezierPath alloc] init];
